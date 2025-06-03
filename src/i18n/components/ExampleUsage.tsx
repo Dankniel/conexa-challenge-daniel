@@ -9,34 +9,34 @@ const ExampleUsage = () => {
       <Text style={styles.title}>{t('messages.welcomeMessage')}</Text>
       
       <View style={styles.section}>
-        <Text style={styles.subtitle}>Textos Básicos:</Text>
+        <Text style={styles.subtitle}>{t('demo.basicTexts')}:</Text>
         <Text>{t('common.loading')}</Text>
         <Text>{t('common.success')}</Text>
         <Text>{t('common.error')}</Text>
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.subtitle}>Navegación:</Text>
+        <Text style={styles.subtitle}>{t('demo.navigation')}:</Text>
         <Text>{t('navigation.home')}</Text>
         <Text>{t('navigation.profile')}</Text>
         <Text>{t('navigation.settings')}</Text>
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.subtitle}>Autenticación:</Text>
+        <Text style={styles.subtitle}>{t('demo.authentication')}:</Text>
         <Text>{t('auth.login')}</Text>
         <Text>{t('auth.register')}</Text>
         <Text>{t('auth.email')}</Text>
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.subtitle}>Validaciones:</Text>
+        <Text style={styles.subtitle}>{t('demo.validation')}:</Text>
         <Text>{t('validation.required')}</Text>
         <Text>{t('validation.invalidEmail')}</Text>
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.subtitle}>Mensajes:</Text>
+        <Text style={styles.subtitle}>{t('demo.message')}:</Text>
         <Text>{t('messages.thankYou')}</Text>
         <Text>{t('messages.pleaseWait')}</Text>
         <Text>{t('messages.noDataFound')}</Text>

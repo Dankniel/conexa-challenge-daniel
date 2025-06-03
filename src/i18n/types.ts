@@ -27,6 +27,8 @@ export interface LanguageResource {
     profile: string;
     settings: string;
     about: string;
+    users: string;
+    favorites: string;
   };
   auth: {
     login: string;
@@ -39,6 +41,16 @@ export interface LanguageResource {
     username: string;
     firstName: string;
     lastName: string;
+  };
+  login: {
+    welcome: string;
+    username: string;
+    password: string;
+    usernamePlaceholder: string;
+    passwordPlaceholder: string;
+    loginButton: string;
+    errorRequired: string;
+    errorInvalidCredentials: string;
   };
   validation: {
     required: string;
@@ -55,6 +67,7 @@ export interface LanguageResource {
     tryAgain: string;
     noDataFound: string;
     connectionError: string;
+    momentPlease: string;
   };
   settings: {
     title: string;
@@ -69,6 +82,43 @@ export interface LanguageResource {
     loggingOut: string;
     i18nDemo: string;
     i18nDemoDescription: string;
+    savedLanguage: string;
+  };
+  home: {
+    latestNews: string;
+    searchResults: string;
+    loadingNews: string;
+    errorLoadingNews: string;
+    checkConnection: string;
+    noNewsFound: string;
+    tryOtherTerms: string;
+    searchPlaceholder: string;
+  };
+  favorites: {
+    title: string;
+    loadingFavorites: string;
+    noFavorites: string;
+    addFromHome: string;
+    favoritesCount: string;
+    favoritesSingular: string;
+    favoritesPlural: string;
+  };
+  users: {
+    title: string;
+    loadingUsers: string;
+    errorLoadingUsers: string;
+    pullToRetry: string;
+    noUsersFound: string;
+    tryDifferentSearch: string;
+    usersFound: string;
+  };
+  demo: {
+    common: string;
+    navigation: string;
+    authentication: string;
+    validation: string;
+    message: string;
+    basicTexts: string;
   };
 }
 

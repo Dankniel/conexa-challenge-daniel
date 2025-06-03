@@ -5,10 +5,12 @@ import { transformPostsToNewsData } from '../../utils/dataTransformers';
 import { NewsData } from '../../components/NewsCard/types';
 import { usePosts } from '../../hooks/usePosts';
 import { HomeScreenNavigationProp } from '../../../../navigation/types';
+import { useI18n } from '../../../../i18n';
 
 const HomeScreenContainer = () => {
   const navigation = useNavigation<HomeScreenNavigationProp>();
   const { posts, isLoading, error, searchQuery } = usePosts();
+  const { t } = useI18n();
 
   const handleNewsPress = (news: NewsData) => {
     
@@ -29,8 +31,8 @@ const HomeScreenContainer = () => {
     const newsData = posts ? transformPostsToNewsData(posts) : [];
     
     const displayText = searchQuery 
-      ? `Resultados de búsqueda: "${searchQuery}"` 
-      : "Últimas Noticias";
+      ? `${t('home.searchResults')}: "${searchQuery}"` 
+      : t('home.latestNews');
 
     return {
       text: displayText,
@@ -40,7 +42,7 @@ const HomeScreenContainer = () => {
       onNewsPress: handleNewsPress,
       onNavigateToFavorites: handleNavigateToFavorites
     };
-  }, [posts, isLoading, error, searchQuery]);
+  }, [posts, isLoading, error, searchQuery, t]);
 
   return (
     <HomeScreenPresentational {...screenState} />

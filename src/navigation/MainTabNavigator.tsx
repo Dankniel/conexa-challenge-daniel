@@ -8,11 +8,13 @@ import { Home, Users, Settings } from '@tamagui/lucide-icons';
 import { Platform, View, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAppInitialization } from '../features/home/hooks/usePosts';
+import { useI18n } from '../i18n';
 
 const MainTab = createBottomTabNavigator<MainTabParamList>();
 
 const MainTabNavigator = () => {
   const insets = useSafeAreaInsets();
+  const { t } = useI18n();
   
   // Inicializar la aplicación cargando favoritos de manera no bloqueante
   useAppInitialization();
@@ -69,7 +71,7 @@ const MainTabNavigator = () => {
           name="Home" 
           component={HomeStackNavigator} 
           options={{ 
-            title: 'Inicio',
+            title: t('navigation.home'),
             tabBarIcon: ({ color, size }) => <Home size={size} color={color} />
           }} 
         />
@@ -77,7 +79,7 @@ const MainTabNavigator = () => {
           name="Users" 
           component={UsersScreen} 
           options={{ 
-            title: 'Usuarios',
+            title: t('navigation.users'),
             tabBarIcon: ({ color, size }) => <Users size={size} color={color} />
           }} 
         />
@@ -85,7 +87,7 @@ const MainTabNavigator = () => {
           name="Settings" 
           component={SettingsScreen} 
           options={{ 
-            title: 'Configuración',
+            title: t('navigation.settings'),
             tabBarIcon: ({ color, size }) => <Settings size={size} color={color} />
           }} 
         />

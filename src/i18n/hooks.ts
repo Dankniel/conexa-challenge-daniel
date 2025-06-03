@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { AppDispatch } from '../store/store';
 import { selectSelectedLanguage } from '../store/selectors/authSelectors';
 import { saveLanguageToStorage, setSelectedLanguage } from '../store/slices/authSlice';
@@ -57,9 +57,11 @@ export const useLanguageWithRedux = () => {
   const selectedLanguage = useSelector(selectSelectedLanguage);
   const { t, getCurrentLanguage } = useI18n();
 
-  // Sincronizar i18n con Redux solo cuando selectedLanguage cambie y sea diferente
+  // Sincronizar i18n con Redux cuando selectedLanguage cambie
   useEffect(() => {
-    if (selectedLanguage && getCurrentLanguage() !== selectedLanguage) {
+    const currentLang = getCurrentLanguage();
+    if (selectedLanguage && currentLang !== selectedLanguage) {
+      console.log(`Sincronizando idioma: ${currentLang} -> ${selectedLanguage}`);
       i18n.changeLanguage(selectedLanguage);
     }
   }, [selectedLanguage, getCurrentLanguage]);
@@ -67,7 +69,9 @@ export const useLanguageWithRedux = () => {
   const changeLanguage = useCallback((language: SupportedLanguages) => {
     // Solo actualizar si es diferente al actual
     if (selectedLanguage !== language) {
-      // 1. Primero actualizar Redux sincrónicamente para evitar glitch
+      console.log(`Cambiando idioma a: ${language}`);
+      
+      // 1. Primero actualizar Redux sincrónicamente
       dispatch(setSelectedLanguage(language));
       
       // 2. Cambiar en i18n inmediatamente después
@@ -101,4 +105,25 @@ export const useLanguageWithRedux = () => {
 // Helper para obtener traducciones fuera de componentes React
 export const translate = (key: string, options?: any) => {
   return i18n.t(key, options);
+};
+
+// Hook para inicialización del i18n (usar solo una vez en AppNavigator)
+export const useI18nInitialization = () => {
+  const selectedLanguage = useSelector(selectSelectedLanguage);
+  const hasInitialized = useRef(false);
+
+  useEffect(() => {
+    // Solo sincronizar después de que Redux se haya inicializado completamente
+    if (!hasInitialized.current && selectedLanguage) {
+      const currentI18nLang = i18n.language;
+      if (currentI18nLang !== selectedLanguage) {
+        console.log(`Inicialización i18n: ${currentI18nLang} -> ${selectedLanguage}`);
+        i18n.changeLanguage(selectedLanguage);
+        hasInitialized.current = true;
+      } else if (currentI18nLang === selectedLanguage) {
+        // Ya están sincronizados
+        hasInitialized.current = true;
+      }
+    }
+  }, [selectedLanguage]);
 }; 

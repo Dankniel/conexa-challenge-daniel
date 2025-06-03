@@ -30,7 +30,7 @@ i18n
   .init({
     compatibilityJSON: 'v4',
     resources,
-    lng: getDeviceLanguage(),
+    lng: fallbackLanguage,
     fallbackLng: fallbackLanguage,
     debug: __DEV__,
     interpolation: {
@@ -42,6 +42,6 @@ i18n
   });
 
 // Exports
-export { useI18n, useLanguageSwitch, useLanguageWithRedux, translate } from './hooks';
+export { useI18n, useLanguageSwitch, useLanguageWithRedux, useI18nInitialization, translate } from './hooks';
 export type { SupportedLanguages, LanguageResource, TranslationKeys, I18nConfig } from './types';
 export default i18n; 

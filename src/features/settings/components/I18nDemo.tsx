@@ -31,7 +31,7 @@ const I18nDemo = React.memo(() => {
       {/* Idioma actual desde Redux */}
       <XStack jc="center" ai="center" mb="$4">
         <Text fontSize="$3" color="$purple9" fontWeight="500">
-          Idioma guardado: 
+          {t('settings.savedLanguage')}: 
         </Text>
         <Text fontSize="$3" color="$purple12" fontWeight="700" ml="$2">
           {selectedLanguage === 'es' ? '🇪🇸 Español' : '🇺🇸 English'}
@@ -53,27 +53,27 @@ const I18nDemo = React.memo(() => {
         </Text>
         
         <XStack jc="space-between" ai="center">
-          <Text fontSize="$3" color="$purple10" fontWeight="500">Común:</Text>
+          <Text fontSize="$3" color="$purple10" fontWeight="500">{t('demo.common')}:</Text>
           <Text fontSize="$3" color="$purple12" fontWeight="600">{t('common.loading')}</Text>
         </XStack>
         
         <XStack jc="space-between" ai="center">
-          <Text fontSize="$3" color="$purple10" fontWeight="500">Navegación:</Text>
+          <Text fontSize="$3" color="$purple10" fontWeight="500">{t('demo.navigation')}:</Text>
           <Text fontSize="$3" color="$purple12" fontWeight="600">{t('navigation.home')}</Text>
         </XStack>
         
         <XStack jc="space-between" ai="center">
-          <Text fontSize="$3" color="$purple10" fontWeight="500">Autenticación:</Text>
+          <Text fontSize="$3" color="$purple10" fontWeight="500">{t('demo.authentication')}:</Text>
           <Text fontSize="$3" color="$purple12" fontWeight="600">{t('auth.login')}</Text>
         </XStack>
         
         <XStack jc="space-between" ai="center">
-          <Text fontSize="$3" color="$purple10" fontWeight="500">Validación:</Text>
+          <Text fontSize="$3" color="$purple10" fontWeight="500">{t('demo.validation')}:</Text>
           <Text fontSize="$3" color="$purple12" fontWeight="600">{t('validation.required')}</Text>
         </XStack>
         
         <XStack jc="space-between" ai="center">
-          <Text fontSize="$3" color="$purple10" fontWeight="500">Mensaje:</Text>
+          <Text fontSize="$3" color="$purple10" fontWeight="500">{t('demo.message')}:</Text>
           <Text fontSize="$3" color="$purple12" fontWeight="600">{t('messages.welcomeMessage')}</Text>
         </XStack>
       </YStack>

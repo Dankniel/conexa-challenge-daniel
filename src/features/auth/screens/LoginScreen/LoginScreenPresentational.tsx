@@ -2,6 +2,7 @@ import React from 'react';
 import { LoginScreenPresentationalProps } from './types';
 import { YStack, XStack, Text, Button, Input, Label, Spinner } from 'tamagui';
 import { Eye, EyeOff } from '@tamagui/lucide-icons';
+import { useI18n } from '../../../../i18n';
 
 const LoginScreenPresentational = ({ 
   text, 
@@ -15,6 +16,8 @@ const LoginScreenPresentational = ({
   showPassword,
   onTogglePasswordVisibility
 }: LoginScreenPresentationalProps) => {
+  const { t } = useI18n();
+
   return (
     <YStack f={1} jc="center" ai="center" p="$4" gap="$4" backgroundColor="$purple1">
       <Text fontSize="$8" color="$purple12" mb="$6" fontWeight="bold" textAlign="center">
@@ -23,11 +26,11 @@ const LoginScreenPresentational = ({
 
       <YStack width="100%" maxWidth={300} gap="$3">
         <Label htmlFor="username" color="$purple11" fontSize="$4" fontWeight="600">
-          Usuario
+          {t('login.username')}
         </Label>
         <Input 
           id="username" 
-          placeholder="Ingresa tu usuario" 
+          placeholder={t('login.usernamePlaceholder')} 
           size="$4" 
           value={username} 
           onChangeText={onUsernameChange}
@@ -44,12 +47,12 @@ const LoginScreenPresentational = ({
 
       <YStack width="100%" maxWidth={300} gap="$3">
         <Label htmlFor="password" color="$purple11" fontSize="$4" fontWeight="600">
-          Contraseña
+          {t('login.password')}
         </Label>
         <XStack alignItems="center" gap="$2">
           <Input 
             id="password" 
-            placeholder="Ingresa tu contraseña" 
+            placeholder={t('login.passwordPlaceholder')} 
             size="$4" 
             secureTextEntry={!showPassword}
             value={password} 
@@ -113,7 +116,7 @@ const LoginScreenPresentational = ({
         }}
         icon={loading ? () => <Spinner size="small" color="$purple1" /> : undefined}
       >
-        <Text color="$purple1" fontWeight="bold">Iniciar Sesión</Text>
+        <Text color="$purple1" fontWeight="bold">{t('login.loginButton')}</Text>
       </Button>
     </YStack>
   );

@@ -7,6 +7,7 @@ import { NewsData } from '../../components/NewsCard/types';
 import NewsCardContainer from '../../components/NewsCard/NewsCardContainer';
 import SearchBarContainer from '../../../../components/SearchBar/SearchBarContainer';
 import FavoritesCounterContainer from '../../../../components/FavoritesCounter/FavoritesCounterContainer';
+import { useI18n } from '../../../../i18n';
 
 const HomeScreenPresentational = ({ 
   text, 
@@ -17,6 +18,7 @@ const HomeScreenPresentational = ({
   hasError = false 
 }: HomeScreenPresentationalProps) => {
   
+  const { t } = useI18n();
   const insets = useSafeAreaInsets();
   
   const renderNewsItem = ({ item }: { item: NewsData }) => (
@@ -33,7 +35,7 @@ const HomeScreenPresentational = ({
         <YStack gap="$2" alignItems="center" marginTop="$8">
           <Spinner size="large" color="$purple10" />
           <Text fontSize="$4" color="$purple10">
-            Cargando noticias...
+            {t('home.loadingNews')}
           </Text>
         </YStack>
       );
@@ -43,10 +45,10 @@ const HomeScreenPresentational = ({
       return (
         <YStack gap="$2" alignItems="center" marginTop="$8">
           <Text fontSize="$6" color="$red10" textAlign="center">
-            ⚠️ Error al cargar las noticias
+            ⚠️ {t('home.errorLoadingNews')}
           </Text>
           <Text fontSize="$4" color="$purple10" textAlign="center">
-            Por favor, verifica tu conexión a internet e intenta nuevamente
+            {t('home.checkConnection')}
           </Text>
         </YStack>
       );
@@ -56,10 +58,10 @@ const HomeScreenPresentational = ({
       return (
         <YStack gap="$2" alignItems="center" marginTop="$8">
           <Text fontSize="$6" color="$gray10" textAlign="center">
-            🔍 No se encontraron noticias
+            🔍 {t('home.noNewsFound')}
           </Text>
           <Text fontSize="$4" color="$gray9" textAlign="center">
-            Intenta con otros términos de búsqueda
+            {t('home.tryOtherTerms')}
           </Text>
         </YStack>
       );
@@ -114,7 +116,7 @@ const HomeScreenPresentational = ({
         </XStack>
         
         <SearchBarContainer 
-          placeholder="Buscar por título, contenido o categoría..."
+          placeholder={t('home.searchPlaceholder')}
         />
       </YStack>
 

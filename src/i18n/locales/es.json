@@ -24,7 +24,9 @@
     "home": "Inicio",
     "profile": "Perfil",
     "settings": "Configuración",
-    "about": "Acerca de"
+    "about": "Acerca de",
+    "users": "Usuarios",
+    "favorites": "Favoritos"
   },
   "auth": {
     "login": "Iniciar Sesión",
@@ -37,6 +39,16 @@
     "username": "Nombre de Usuario",
     "firstName": "Nombre",
     "lastName": "Apellido"
+  },
+  "login": {
+    "welcome": "Bienvenido de nuevo!",
+    "username": "Usuario",
+    "password": "Contraseña",
+    "usernamePlaceholder": "Ingresa tu usuario",
+    "passwordPlaceholder": "Ingresa tu contraseña",
+    "loginButton": "Iniciar Sesión",
+    "errorRequired": "Por favor, ingresa usuario y contraseña.",
+    "errorInvalidCredentials": "Credenciales inválidas."
   },
   "validation": {
     "required": "Este campo es obligatorio",
@@ -52,7 +64,8 @@
     "pleaseWait": "Por favor espera",
     "tryAgain": "Inténtalo de nuevo",
     "noDataFound": "No se encontraron datos",
-    "connectionError": "Error de conexión"
+    "connectionError": "Error de conexión",
+    "momentPlease": "Un momento por favor"
   },
   "settings": {
     "title": "Configuración",
@@ -66,6 +79,43 @@
     "languageDescription": "Selecciona tu idioma preferido",
     "loggingOut": "Cerrando Sesión...",
     "i18nDemo": "Ejemplos de traducciones",
-    "i18nDemoDescription": "Prueba las funcionalidades de i18n"
+    "i18nDemoDescription": "Prueba las funcionalidades de i18n",
+    "savedLanguage": "Idioma guardado"
+  },
+  "home": {
+    "latestNews": "Últimas Noticias",
+    "searchResults": "Resultados de búsqueda",
+    "loadingNews": "Cargando noticias...",
+    "errorLoadingNews": "Error al cargar las noticias",
+    "checkConnection": "Por favor, verifica tu conexión a internet e intenta nuevamente",
+    "noNewsFound": "No se encontraron noticias",
+    "tryOtherTerms": "Intenta con otros términos de búsqueda",
+    "searchPlaceholder": "Buscar por título, contenido o categoría..."
+  },
+  "favorites": {
+    "title": "Mis Favoritos",
+    "loadingFavorites": "Cargando favoritos...",
+    "noFavorites": "No hay favoritos guardados",
+    "addFromHome": "Agrega noticias a tus favoritos desde la pantalla principal para verlas aquí",
+    "favoritesCount": "{{count}} noticias",
+    "favoritesSingular": "favorito",
+    "favoritesPlural": "favoritos"
+  },
+  "users": {
+    "title": "Usuarios",
+    "loadingUsers": "Cargando usuarios...",
+    "errorLoadingUsers": "Error al cargar usuarios",
+    "pullToRetry": "Desliza hacia abajo para intentar de nuevo",
+    "noUsersFound": "No se encontraron usuarios",
+    "tryDifferentSearch": "Intenta con un término de búsqueda diferente",
+    "usersFound": "{{count}} usuarios encontrados"
+  },
+  "demo": {
+    "common": "Común",
+    "navigation": "Navegación",
+    "authentication": "Autenticación",
+    "validation": "Validación",
+    "message": "Mensaje",
+    "basicTexts": "Textos Básicos"
   }
 } 

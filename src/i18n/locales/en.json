@@ -24,7 +24,9 @@
     "home": "Home",
     "profile": "Profile",
     "settings": "Settings",
-    "about": "About"
+    "about": "About",
+    "users": "Users",
+    "favorites": "Favorites"
   },
   "auth": {
     "login": "Login",
@@ -37,6 +39,16 @@
     "username": "Username",
     "firstName": "First Name",
     "lastName": "Last Name"
+  },
+  "login": {
+    "welcome": "Welcome back!",
+    "username": "Username",
+    "password": "Password",
+    "usernamePlaceholder": "Enter your username",
+    "passwordPlaceholder": "Enter your password",
+    "loginButton": "Sign In",
+    "errorRequired": "Please enter username and password.",
+    "errorInvalidCredentials": "Invalid credentials."
   },
   "validation": {
     "required": "This field is required",
@@ -52,7 +64,8 @@
     "pleaseWait": "Please wait",
     "tryAgain": "Try again",
     "noDataFound": "No data found",
-    "connectionError": "Connection error"
+    "connectionError": "Connection error",
+    "momentPlease": "One moment please"
   },
   "settings": {
     "title": "Settings",
@@ -66,6 +79,43 @@
     "languageDescription": "Select your preferred language",
     "loggingOut": "Logging out...",
     "i18nDemo": "Translation examples",
-    "i18nDemoDescription": "Test the i18n features"
+    "i18nDemoDescription": "Test the i18n features",
+    "savedLanguage": "Saved language"
+  },
+  "home": {
+    "latestNews": "Latest News",
+    "searchResults": "Search results",
+    "loadingNews": "Loading news...",
+    "errorLoadingNews": "Error loading news",
+    "checkConnection": "Please check your internet connection and try again",
+    "noNewsFound": "No news found",
+    "tryOtherTerms": "Try with different search terms",
+    "searchPlaceholder": "Search by title, content or category..."
+  },
+  "favorites": {
+    "title": "My Favorites",
+    "loadingFavorites": "Loading favorites...",
+    "noFavorites": "No favorites saved",
+    "addFromHome": "Add news to your favorites from the main screen to see them here",
+    "favoritesCount": "{{count}} news",
+    "favoritesSingular": "favorite",
+    "favoritesPlural": "favorites"
+  },
+  "users": {
+    "title": "Users",
+    "loadingUsers": "Loading users...",
+    "errorLoadingUsers": "Error loading users",
+    "pullToRetry": "Pull down to try again",
+    "noUsersFound": "No users found",
+    "tryDifferentSearch": "Try with a different search term",
+    "usersFound": "{{count}} users found"
+  },
+  "demo": {
+    "common": "Common",
+    "navigation": "Navigation",
+    "authentication": "Authentication",
+    "validation": "Validation",
+    "message": "Message",
+    "basicTexts": "Basic Texts"
   }
 } 

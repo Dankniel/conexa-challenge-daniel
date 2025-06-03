@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../../store/store';
 import { setUserToken } from '../../../../store/slices/authSlice';
+import { useI18n } from '../../../../i18n';
 import LoginScreenPresentational from './LoginScreenPresentational';
 
 const LoginScreenContainer = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const { t } = useI18n();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -16,7 +18,7 @@ const LoginScreenContainer = () => {
     setError(null);
 
     if (!username || !password) {
-      setError('Por favor, ingresa usuario y contraseña.');
+      setError(t('login.errorRequired'));
       return;
     }
 
@@ -28,7 +30,7 @@ const LoginScreenContainer = () => {
         dispatch(setUserToken('dummy-token'));
         console.log('User logged in (Redux)');
       } else {
-        setError('Credenciales inválidas.');
+        setError(t('login.errorInvalidCredentials'));
         console.log('Login failed: Invalid credentials');
       }
       setLoading(false);
@@ -41,7 +43,7 @@ const LoginScreenContainer = () => {
 
   return (
     <LoginScreenPresentational
-      text="Bienvenido de nuevo!"
+      text={t('login.welcome')}
       onLoginPress={handleLogin}
       username={username}
       password={password}

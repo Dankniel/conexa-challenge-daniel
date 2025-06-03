@@ -9,6 +9,7 @@ import MainTabNavigator from './MainTabNavigator';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../store/store';
 import { setLoading, setUserToken, loadLanguageFromStorage } from '../store/slices/authSlice';
+import { useI18nInitialization } from '../i18n';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -16,11 +17,11 @@ const AppNavigator = () => {
   // Get authentication state from the Redux store
   const { userToken, isLoading } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch<AppDispatch>();
-
+  
   // Simulate initial loading and token check
   useEffect(() => {
     const initializeApp = async () => {
-      // Cargar idioma desde AsyncStorage
+      // Cargar idioma desde AsyncStorage primero
       await dispatch(loadLanguageFromStorage());
       
       const timeoutId = setTimeout(() => {
@@ -38,6 +39,9 @@ const AppNavigator = () => {
 
     initializeApp();
   }, [dispatch]);
+  
+  // Inicializar sincronización de i18n después de que Redux esté listo
+  useI18nInitialization();
 
   // Set navigation bar color for Android
   useEffect(() => {

@@ -37,7 +37,14 @@ export const loadLanguageFromStorage = () => async (dispatch: any) => {
   try {
     const savedLanguage = await AsyncStorage.getItem(LANGUAGE_STORAGE_KEY);
     if (savedLanguage && (savedLanguage === 'es' || savedLanguage === 'en')) {
+      // Actualizar Redux
       dispatch(setSelectedLanguage(savedLanguage as SupportedLanguages));
+      
+      // Sincronizar i18n inmediatamente - importación dinámica para evitar circular dependency
+      const i18n = require('../../i18n/index').default;
+      if (i18n.language !== savedLanguage) {
+        await i18n.changeLanguage(savedLanguage);
+      }
     }
   } catch (error) {
     console.error('Error loading language from AsyncStorage:', error);
