@@ -6,29 +6,13 @@ import { NewsCardPresentationalProps } from './types';
 
 const NewsCardPresentational = ({ 
   news, 
+  formattedDate,
   onPress, 
   isFavorite = false, 
   onToggleFavorite 
 }: NewsCardPresentationalProps) => {
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('es-ES', {
-      day: '2-digit',
-      month: 'short',
-      year: 'numeric'
-    });
-  };
-
-  const handlePress = () => {
-    onPress?.(news);
-  };
-
-  const handleFavoritePress = () => {
-    onToggleFavorite?.();
-  };
-
   return (
-    <TouchableOpacity onPress={handlePress} activeOpacity={0.8}>
+    <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
       <Card
         elevate
         size="$4"
@@ -64,7 +48,7 @@ const NewsCardPresentational = ({
               </Text>
               <XStack alignItems="center" gap="$2">
                 <Text fontSize="$2" color="$gray10">
-                  {formatDate(news.publishedAt)}
+                  {formattedDate}
                 </Text>
                 {onToggleFavorite && (
                   <Button
@@ -78,7 +62,7 @@ const NewsCardPresentational = ({
                         fill={isFavorite ? "$red10" : "transparent"}
                       />
                     }
-                    onPress={handleFavoritePress}
+                    onPress={onToggleFavorite}
                     backgroundColor="transparent"
                     borderWidth={0}
                   />

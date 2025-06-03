@@ -10,7 +10,8 @@ export interface NewsData {
 
 export interface NewsCardPresentationalProps {
   news: NewsData;
-  onPress?: (news: NewsData) => void;
+  formattedDate: string;
+  onPress: () => void;
   isFavorite?: boolean;
   onToggleFavorite?: () => void;
 }

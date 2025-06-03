@@ -12,6 +12,7 @@ const HomeScreenPresentational = ({
   text, 
   news, 
   onNewsPress, 
+  onNavigateToFavorites,
   isLoading = false, 
   hasError = false 
 }: HomeScreenPresentationalProps) => {
@@ -109,7 +110,7 @@ const HomeScreenPresentational = ({
           >
             {text}
           </Text>
-          <FavoritesCounterContainer />
+          <FavoritesCounterContainer onPress={onNavigateToFavorites} />
         </XStack>
         
         <SearchBarContainer 
