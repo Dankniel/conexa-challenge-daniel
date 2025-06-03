@@ -6,10 +6,11 @@ import { LogOut, Settings, User, Bell } from '@tamagui/lucide-icons';
 const SettingsScreenPresentational = ({ 
   text, 
   onLogoutPress, 
-  loading 
+  loading,
+  paddingTop
 }: SettingsScreenPresentationalProps) => {
   return (
-    <YStack f={1} p="$4" gap="$4" backgroundColor="$purple1">
+    <YStack f={1} p="$4" gap="$4" backgroundColor="$purple1" paddingTop={paddingTop}>
       <Text fontSize="$8" color="$purple12" fontWeight="bold" textAlign="center" mb="$4">
         {text}
       </Text>

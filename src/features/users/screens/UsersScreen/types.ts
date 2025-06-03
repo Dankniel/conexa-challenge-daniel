@@ -1,3 +1,11 @@
+import { User } from '../../../../types/user';
+
 export interface UsersScreenPresentationalProps {
-  text: string;
+  users: User[];
+  isLoading: boolean;
+  isError: boolean;
+  isRefreshing: boolean;
+  onRefresh: () => void;
+  onSelectUser: (user: User) => void;
+  paddingTop: number;
 } 
