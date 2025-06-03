@@ -34,9 +34,16 @@ const NewsCardContainer = ({ news, onPress }: NewsCardContainerProps) => {
   };
 
   const handleNewsPress = () => {
-    // Aquí se puede agregar lógica adicional como analytics, navegación, etc.
-    console.log('Noticia seleccionada:', news.title);
-    onPress?.(news);
+    console.log('🎯 NewsCardContainer: handleNewsPress llamado');
+    console.log('📰 Noticia seleccionada en card:', news.title);
+    console.log('🔗 onPress function existe?', !!onPress);
+    
+    if (onPress) {
+      console.log('🚀 Ejecutando onPress con noticia:', news.id);
+      onPress(news);
+    } else {
+      console.warn('⚠️ onPress no está definido');
+    }
   };
 
   const handleToggleFavorite = () => {

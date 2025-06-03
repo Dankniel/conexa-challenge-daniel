@@ -12,20 +12,20 @@ const NewsCardPresentational = ({
   onToggleFavorite 
 }: NewsCardPresentationalProps) => {
   return (
-    <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
+    <TouchableOpacity 
+      onPress={onPress} 
+      activeOpacity={0.8}
+      style={{ marginBottom: 12 }}
+    >
       <Card
         elevate
         size="$4"
         bordered
         animation="bouncy"
-        scale={0.9}
-        hoverStyle={{ scale: 0.925 }}
-        pressStyle={{ scale: 0.875 }}
         backgroundColor="$background"
         borderColor="$borderColor"
         borderRadius="$4"
         padding="$0"
-        marginBottom="$3"
         overflow="hidden"
       >
         <YStack space="$3">
@@ -51,21 +51,19 @@ const NewsCardPresentational = ({
                   {formattedDate}
                 </Text>
                 {onToggleFavorite && (
-                  <Button
-                    size="$2"
-                    variant="outlined"
-                    circular
-                    icon={
-                      <Heart 
-                        size={16} 
-                        color={isFavorite ? "$red10" : "$gray10"}
-                        fill={isFavorite ? "$red10" : "transparent"}
-                      />
-                    }
-                    onPress={onToggleFavorite}
-                    backgroundColor="transparent"
-                    borderWidth={0}
-                  />
+                  <TouchableOpacity
+                    onPress={(e) => {
+                      e.stopPropagation();
+                      onToggleFavorite();
+                    }}
+                    style={{ padding: 4 }}
+                  >
+                    <Heart 
+                      size={16} 
+                      color={isFavorite ? "#ef4444" : "#6b7280"}
+                      fill={isFavorite ? "#ef4444" : "transparent"}
+                    />
+                  </TouchableOpacity>
                 )}
               </XStack>
             </XStack>

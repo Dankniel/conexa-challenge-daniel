@@ -11,9 +11,12 @@ const HomeScreenContainer = () => {
   const { posts, isLoading, error, searchQuery } = usePosts();
 
   const handleNewsPress = (news: NewsData) => {
-    // Aquí se puede agregar lógica de navegación a detalle de noticia
-    console.log('Navegando al detalle de la noticia:', news.title);
-    // Ejemplo: navigation.navigate('NewsDetail', { newsId: news.id });
+    
+    try {
+      navigation.navigate('NewsDetail', { news });
+    } catch (error) {
+      console.error('navigation error:', error);
+    }
   };
 
   const handleNavigateToFavorites = () => {

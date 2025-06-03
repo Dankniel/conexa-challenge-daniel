@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { HomeStackParamList } from './types';
 import HomeScreenContainer from '../features/home/screens/HomeScreen/HomeScreenContainer';
 import FavoritesScreenContainer from '../features/favorites/screens/FavoritesScreen/FavoritesScreenContainer';
+import NewsDetailScreenContainer from '../features/news-detail/screens/NewsDetailScreen/NewsDetailScreenContainer';
 
 const HomeStack = createStackNavigator<HomeStackParamList>();
 
@@ -49,6 +50,41 @@ const HomeStackNavigator = () => {
               animation: 'timing',
               config: {
                 duration: 200,
+              },
+            },
+          },
+        }}
+      />
+      <HomeStack.Screen 
+        name="NewsDetail" 
+        component={NewsDetailScreenContainer}
+        options={{
+          gestureEnabled: true,
+          cardStyleInterpolator: ({ current, layouts }) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+          transitionSpec: {
+            open: {
+              animation: 'timing',
+              config: {
+                duration: 300,
+              },
+            },
+            close: {
+              animation: 'timing',
+              config: {
+                duration: 250,
               },
             },
           },

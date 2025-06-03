@@ -42,7 +42,8 @@ const FavoritesScreenContainer = () => {
   };
 
   const handleNewsPress = (news: NewsData) => {
-    console.log('Noticia presionada:', news.title);
+    console.log('Navegando al detalle de la noticia desde favoritos:', news.title);
+    navigation.navigate('NewsDetail', { news });
   };
 
   // Calcular estilos
