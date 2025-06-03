@@ -26,10 +26,9 @@ const FavoritesScreenContainer = () => {
     // Simular carga inmediata para la navegación
     const timer = setTimeout(() => {
       if (!isLoadingFavorites && favoritePosts) {
-        if (favoritePosts.length > 0) {
-          const transformedData = transformPostsToNewsData(favoritePosts);
-          setFavoriteNewsData(transformedData);
-        }
+        // Siempre transformar los datos, incluido cuando la lista está vacía
+        const transformedData = transformPostsToNewsData(favoritePosts);
+        setFavoriteNewsData(transformedData);
       }
       setIsLoading(false);
     }, 50); // 50ms es imperceptible pero permite que la navegación sea fluida
