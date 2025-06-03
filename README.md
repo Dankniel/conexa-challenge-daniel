@@ -5,6 +5,7 @@ This project follows an organized folder structure to improve the application's 
 Below is the main structure description:
 
 ```
+├── __tests__/                 # Unit and integration tests
 ├── assets/
 │   ├── fonts/    # Custom fonts
 │   └── images/   # Images and other visual assets
@@ -62,4 +63,55 @@ Below is the main structure description:
 └── package.json              # Project dependencies and scripts file
 ```
 
-This structure aims to separate concerns and facilitate the organized growth of the project. 
+This structure aims to separate concerns and facilitate the organized growth of the project.
+
+## Testing
+
+This project utilizes Jest for unit and integration testing. Tests are located in the `__tests__/` directory at the root of the project.
+
+
+### Tests folder structure
+```
+├── __tests__/                 # Unit and integration tests
+│   ├── components/             # Tests for global components
+│   │   ├── Button.test.tsx
+│   │   └── Card.test.tsx
+│   ├── features/               # Tests grouped by feature
+│   │   ├── auth/
+│   │   │   ├── components/
+│   │   │   │   └── LoginForm.test.tsx
+│   │   │   ├── screens/
+│   │   │   │   └── LoginScreen.test.tsx
+│   │   │   └── slices/
+│   │   │       └── authSlice.test.ts
+│   ├── hooks/                  # Tests for global hooks
+│   │   └── useFormValidation.test.ts
+│   ├── navigation/             # Tests for navigation logic
+│   │   └── AppNavigator.test.tsx
+│   ├── screens/                # Tests for global screens
+│   │   └── HomeScreen.test.tsx
+│   ├── store/                  # Tests for store logic
+│   │   ├── api/                # Tests for API call logic (mocked)
+│   │   │   └── productsApi.test.ts
+│   │   └── slices/             # Tests for global reducers and selectors
+│   │       └── uiSlice.test.ts
+│   ├── utils/                  # Tests for utility functions
+│   │   └── helpers.test.ts
+```
+
+### Implementation
+
+- **Unit Tests:** Focus on testing individual functions, components, or modules in isolation. Mocking dependencies is crucial for ensuring true unit tests.
+- **Integration Tests:** Verify the interaction between multiple components or modules. These tests ensure that different parts of the application work together correctly.
+- **Test Naming:** Test files should follow a consistent naming convention, typically `[filename].test.js` or `[filename].test.ts`.
+- **Test Coverage:** Aim for high test coverage to ensure that most of the codebase is tested. Use coverage reports to identify areas that need more testing.
+
+### Maintenance
+
+- **Run Tests Regularly:** Integrate test execution into the development workflow (e.g., pre-commit hooks, CI/CD pipelines) to catch regressions early.
+- **Write Clear and Concise Tests:** Tests should be easy to read and understand. Use descriptive names for test suites and individual tests.
+- **Keep Tests Up-to-Date:** Update tests whenever the corresponding code is changed to avoid flaky or outdated tests.
+- **Refactor Tests:** Just like application code, tests should be refactored to improve their readability and maintainability.
+- **Avoid Testing Implementation Details:** Focus on testing the observable behavior of the code rather than its internal implementation details. This makes tests more resilient to code changes.
+
+By following these guidelines, we can ensure that our test suite remains robust, reliable, and maintainable, contributing to the overall quality and stability of the application. 
