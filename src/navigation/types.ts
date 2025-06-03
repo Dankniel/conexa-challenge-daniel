@@ -6,8 +6,14 @@ export type AuthStackParamList = {
   Login: undefined;
 };
 
+// Nuevo: Stack navigation para el Home
+export type HomeStackParamList = {
+  HomeMain: undefined;
+  Favorites: undefined;
+};
+
 export type MainTabParamList = {
-  Home: undefined;
+  Home: NavigatorScreenParams<HomeStackParamList>;
   Users: undefined;
   Settings: undefined;
 };
@@ -23,6 +29,17 @@ export type LoginScreenNavigationProp = CompositeNavigationProp<
 >;
 
 export type HomeScreenNavigationProp = CompositeNavigationProp<
-  BottomTabNavigationProp<MainTabParamList, 'Home'>,
-  StackNavigationProp<RootStackParamList>
+  StackNavigationProp<HomeStackParamList, 'HomeMain'>,
+  CompositeNavigationProp<
+    BottomTabNavigationProp<MainTabParamList, 'Home'>,
+    StackNavigationProp<RootStackParamList>
+  >
+>;
+
+export type FavoritesScreenNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<HomeStackParamList, 'Favorites'>,
+  CompositeNavigationProp<
+    BottomTabNavigationProp<MainTabParamList, 'Home'>,
+    StackNavigationProp<RootStackParamList>
+  >
 >; 

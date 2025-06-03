@@ -15,6 +15,7 @@ import {
   selectIsLoadingFavorites,
   selectFavoritesCount,
   selectIsPostFavorite,
+  selectFavoriteIds,
 } from '../../../store/selectors/postsSelectors';
 import { useGetPostsQuery } from '../../../store/api';
 import { JsonPlaceholderPost } from '../../../store/api/postsApi';
@@ -33,11 +34,6 @@ export const usePosts = () => {
     }
   }, [apiPosts, dispatch]);
   
-  // Cargar favoritos al montar el hook
-  useEffect(() => {
-    dispatch(loadFavorites());
-  }, [dispatch]);
-  
   const handleSearch = useCallback((query: string) => {
     dispatch(setSearchQuery(query));
   }, [dispatch]);
@@ -54,6 +50,22 @@ export const usePosts = () => {
     handleSearch,
     handleClearSearch,
   };
+};
+
+// Hook para inicializar la aplicación
+export const useAppInitialization = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  
+  useEffect(() => {
+    // Cargar favoritos al inicializar la app, pero de manera no bloqueante
+    dispatch(loadFavorites());
+  }, [dispatch]);
+};
+
+// Hook optimizado solo para el contador - no carga datos adicionales
+export const useFavoritesCount = () => {
+  const favoritesCount = useSelector(selectFavoritesCount);
+  return { favoritesCount };
 };
 
 export const useFavorites = () => {

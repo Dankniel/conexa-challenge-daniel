@@ -72,8 +72,20 @@ const filterPosts = (posts: JsonPlaceholderPost[], query: string): JsonPlacehold
   );
 };
 
-export const loadFavorites = () => async (dispatch: any) => {
+export const loadFavorites = () => async (dispatch: any, getState: any) => {
   try {
+    const currentState = getState();
+    
+    // Si ya estamos cargando favoritos, no hacer nada
+    if (currentState.posts.isLoadingFavorites) {
+      return;
+    }
+    
+    // Si ya tenemos favoritos cargados, no recargar
+    if (currentState.posts.favoriteIds.length > 0) {
+      return;
+    }
+    
     dispatch(setLoadingFavorites(true));
     const storedFavorites = await AsyncStorage.getItem(FAVORITES_STORAGE_KEY);
     const favoriteIds = storedFavorites ? JSON.parse(storedFavorites) : [];

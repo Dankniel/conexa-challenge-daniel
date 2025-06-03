@@ -1,17 +1,21 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MainTabParamList } from './types';
-import HomeScreen from '../features/home/screens/HomeScreen/HomeScreenContainer';
+import HomeStackNavigator from './HomeStackNavigator';
 import UsersScreen from '../features/users/screens/UsersScreen/UsersScreenContainer';
 import SettingsScreen from '../features/settings/screens/SettingsScreen/SettingsScreenContainer';
 import { Home, Users, Settings } from '@tamagui/lucide-icons';
 import { Platform, View, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useAppInitialization } from '../features/home/hooks/usePosts';
 
 const MainTab = createBottomTabNavigator<MainTabParamList>();
 
 const MainTabNavigator = () => {
   const insets = useSafeAreaInsets();
+  
+  // Inicializar la aplicación cargando favoritos de manera no bloqueante
+  useAppInitialization();
   
   // Detecta si el dispositivo Android tiene botones de navegación
   const hasNavigationButtons = Platform.OS === 'android' && insets.bottom > 10;
@@ -63,7 +67,7 @@ const MainTabNavigator = () => {
       >
         <MainTab.Screen 
           name="Home" 
-          component={HomeScreen} 
+          component={HomeStackNavigator} 
           options={{ 
             title: 'Inicio',
             tabBarIcon: ({ color, size }) => <Home size={size} color={color} />

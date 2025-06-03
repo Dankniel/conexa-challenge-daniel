@@ -1,13 +1,13 @@
 import React from 'react';
 import FavoritesCounterPresentational from './FavoritesCounterPresentational';
 import { FavoritesCounterContainerProps } from './types';
-import { useFavorites } from '../../features/home/hooks/usePosts';
+import { useFavoritesCount } from '../../features/home/hooks/usePosts';
 
 const FavoritesCounterContainer = ({ 
   onPress,
   showZero = false 
 }: FavoritesCounterContainerProps) => {
-  const { favoritesCount } = useFavorites();
+  const { favoritesCount } = useFavoritesCount();
 
   // Lógica: decidir si mostrar el componente
   const shouldShow = favoritesCount > 0 || showZero;

@@ -14,6 +14,11 @@ export const selectIsLoadingFavorites = (state: RootState) => state.posts.isLoad
 export const selectFavoritePosts = createSelector(
   [selectPosts, selectFavoriteIds],
   (posts: JsonPlaceholderPost[], favoriteIds: string[]) => {
+    // Si no hay posts o favoriteIds, devolver array vacío inmediatamente
+    if (!posts || posts.length === 0 || !favoriteIds || favoriteIds.length === 0) {
+      return [];
+    }
+    
     return posts.filter(post => favoriteIds.includes(post.id.toString()));
   }
 );
