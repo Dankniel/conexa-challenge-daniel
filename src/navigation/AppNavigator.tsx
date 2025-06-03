@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { StatusBar, Platform } from 'react-native';
 import { RootStackParamList } from './types';
 import AuthNavigator from './AuthNavigator';
 import MainTabNavigator from './MainTabNavigator';
@@ -30,6 +32,14 @@ const AppNavigator = () => {
     };
   }, [dispatch]); // Add dispatch to dependencies
 
+  // Set navigation bar color for Android
+  useEffect(() => {
+    if (Platform.OS === 'android') {
+      // Configure navigation bar
+      StatusBar.setBackgroundColor('#7c3aed', true);
+      StatusBar.setBarStyle('light-content', true);
+    }
+  }, []);
 
   if (isLoading) {
     // Initial loading screen
@@ -37,15 +47,52 @@ const AppNavigator = () => {
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {userToken == null ? (
-          <Stack.Screen name="Auth" component={AuthNavigator} />
-        ) : (
-          <Stack.Screen name="Main" component={MainTabNavigator} />
-        )}
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaProvider style={{ backgroundColor: '#7c3aed' }}>
+      <StatusBar 
+        barStyle="light-content" 
+        backgroundColor="#7c3aed" 
+        translucent={Platform.OS === 'android'}
+      />
+      <NavigationContainer
+        theme={{
+          dark: true,
+          colors: {
+            primary: '#7c3aed',
+            background: '#7c3aed',
+            card: '#7c3aed',
+            text: '#ffffff',
+            border: '#8b5cf6',
+            notification: '#c4b5fd',
+          },
+          fonts: {
+            regular: {
+              fontFamily: 'System',
+              fontWeight: '400',
+            },
+            medium: {
+              fontFamily: 'System',
+              fontWeight: '500',
+            },
+            bold: {
+              fontFamily: 'System',
+              fontWeight: '700',
+            },
+            heavy: {
+              fontFamily: 'System',
+              fontWeight: '900',
+            },
+          },
+        }}
+      >
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          {userToken == null ? (
+            <Stack.Screen name="Auth" component={AuthNavigator} />
+          ) : (
+            <Stack.Screen name="Main" component={MainTabNavigator} />
+          )}
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 
