@@ -3,12 +3,17 @@ import { StyleSheet, Text, View } from 'react-native';
 import AppNavigator from './src/navigation/AppNavigator';
 import { Provider } from 'react-redux';
 import { store } from './src/store/store';
+import { TamaguiProvider } from 'tamagui';
+import tamaguiConfig from './tamagui.config';
 
 export default function App() {
   return (
-    <Provider store={store}>
-      <AppNavigator />
-    </Provider>
+    <TamaguiProvider config={tamaguiConfig} defaultTheme="dark_purple">
+      <Provider store={store}>
+        <AppNavigator />
+        <StatusBar style="light" />
+      </Provider>
+    </TamaguiProvider>
   );
 }
 

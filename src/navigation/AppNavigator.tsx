@@ -21,7 +21,7 @@ const AppNavigator = () => {
       // For now, we simulate that there's no saved token
       dispatch(setLoading(false));
       // To test the logged-in flow on startup, uncomment the next line:
-    dispatch(setUserToken('dummy-token'));
+   // dispatch(setUserToken('dummy-token'));
     }, 1000);
 
     // Cleanup function to clear the timeout
