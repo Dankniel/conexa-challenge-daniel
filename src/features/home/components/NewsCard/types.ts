@@ -11,6 +11,8 @@ export interface NewsData {
 export interface NewsCardPresentationalProps {
   news: NewsData;
   onPress?: (news: NewsData) => void;
+  isFavorite?: boolean;
+  onToggleFavorite?: () => void;
 }
 
 export interface NewsCardContainerProps {

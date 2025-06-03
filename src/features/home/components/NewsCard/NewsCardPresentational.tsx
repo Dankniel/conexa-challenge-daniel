@@ -1,9 +1,15 @@
 import React from 'react';
-import { YStack, XStack, Text, Image, Card } from 'tamagui';
+import { YStack, XStack, Text, Image, Card, Button } from 'tamagui';
 import { TouchableOpacity } from 'react-native';
+import { Heart } from '@tamagui/lucide-icons';
 import { NewsCardPresentationalProps } from './types';
 
-const NewsCardPresentational = ({ news, onPress }: NewsCardPresentationalProps) => {
+const NewsCardPresentational = ({ 
+  news, 
+  onPress, 
+  isFavorite = false, 
+  onToggleFavorite 
+}: NewsCardPresentationalProps) => {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('es-ES', {
@@ -15,6 +21,10 @@ const NewsCardPresentational = ({ news, onPress }: NewsCardPresentationalProps) 
 
   const handlePress = () => {
     onPress?.(news);
+  };
+
+  const handleFavoritePress = () => {
+    onToggleFavorite?.();
   };
 
   return (
@@ -52,9 +62,28 @@ const NewsCardPresentational = ({ news, onPress }: NewsCardPresentationalProps) 
               >
                 {news.category}
               </Text>
-              <Text fontSize="$2" color="$gray10">
-                {formatDate(news.publishedAt)}
-              </Text>
+              <XStack alignItems="center" gap="$2">
+                <Text fontSize="$2" color="$gray10">
+                  {formatDate(news.publishedAt)}
+                </Text>
+                {onToggleFavorite && (
+                  <Button
+                    size="$2"
+                    variant="outlined"
+                    circular
+                    icon={
+                      <Heart 
+                        size={16} 
+                        color={isFavorite ? "$red10" : "$gray10"}
+                        fill={isFavorite ? "$red10" : "transparent"}
+                      />
+                    }
+                    onPress={handleFavoritePress}
+                    backgroundColor="transparent"
+                    borderWidth={0}
+                  />
+                )}
+              </XStack>
             </XStack>
             
             <Text 
