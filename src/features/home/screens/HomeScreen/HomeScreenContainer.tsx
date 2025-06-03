@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import HomeScreenPresentational from './HomeScreenPresentational';
-import { useGetPostsQuery } from '../../../../store/api';
 import { transformPostsToNewsData } from '../../utils/dataTransformers';
 import { NewsData } from '../../components/NewsCard/types';
+import { usePosts } from '../../hooks/usePosts';
 
 const HomeScreenContainer = () => {
-  const { data: posts, error, isLoading } = useGetPostsQuery();
+  const { posts, isLoading, error, searchQuery } = usePosts();
 
   const handleNewsPress = (news: NewsData) => {
     // Aquí se puede agregar lógica de navegación a detalle de noticia
@@ -13,37 +13,25 @@ const HomeScreenContainer = () => {
     // Ejemplo: navigation.navigate('NewsDetail', { newsId: news.id });
   };
 
-  // Transformar datos de JSONPlaceholder al formato esperado
-  const newsData = posts ? transformPostsToNewsData(posts) : [];
+  // Estado unificado para el presentational
+  const screenState = useMemo(() => {
+    const newsData = posts ? transformPostsToNewsData(posts) : [];
+    
+    const displayText = searchQuery 
+      ? `Resultados de búsqueda: "${searchQuery}"` 
+      : "Últimas Noticias";
 
-  if (isLoading) {
-    return (
-      <HomeScreenPresentational
-        text="Cargando noticias..."
-        news={[]}
-        onNewsPress={handleNewsPress}
-        isLoading={true}
-      />
-    );
-  }
-
-  if (error) {
-    return (
-      <HomeScreenPresentational
-        text="Error al cargar noticias"
-        news={[]}
-        onNewsPress={handleNewsPress}
-        hasError={true}
-      />
-    );
-  }
+    return {
+      text: displayText,
+      news: newsData,
+      isLoading,
+      hasError: !!error,
+      onNewsPress: handleNewsPress
+    };
+  }, [posts, isLoading, error, searchQuery]);
 
   return (
-    <HomeScreenPresentational
-      text="Últimas Noticias"
-      news={newsData}
-      onNewsPress={handleNewsPress}
-    />
+    <HomeScreenPresentational {...screenState} />
   );
 };
 

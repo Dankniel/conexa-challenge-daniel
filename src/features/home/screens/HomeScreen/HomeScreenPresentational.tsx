@@ -1,10 +1,12 @@
 import React from 'react';
-import { YStack, Text, Spinner } from 'tamagui';
+import { YStack, XStack, Text, Spinner } from 'tamagui';
 import { FlatList, StatusBar, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { HomeScreenPresentationalProps } from './types';
 import { NewsData } from '../../components/NewsCard/types';
 import NewsCardContainer from '../../components/NewsCard/NewsCardContainer';
+import SearchBarContainer from '../../../../components/SearchBar/SearchBarContainer';
+import FavoritesCounterContainer from '../../../../components/FavoritesCounter/FavoritesCounterContainer';
 
 const HomeScreenPresentational = ({ 
   text, 
@@ -49,6 +51,19 @@ const HomeScreenPresentational = ({
       );
     }
     
+    if (news.length === 0) {
+      return (
+        <YStack gap="$2" alignItems="center" marginTop="$8">
+          <Text fontSize="$6" color="$gray10" textAlign="center">
+            🔍 No se encontraron noticias
+          </Text>
+          <Text fontSize="$4" color="$gray9" textAlign="center">
+            Intenta con otros términos de búsqueda
+          </Text>
+        </YStack>
+      );
+    }
+    
     return null;
   };
 
@@ -72,33 +87,40 @@ const HomeScreenPresentational = ({
   };
 
   return (
-    <YStack f={1} backgroundColor="$purple1">
-      <YStack 
-        padding="$4" 
-        paddingBottom="$2"
-        paddingTop={Platform.OS === 'android' ? statusBarHeight + 16 : 16}
-      >
-        <Text fontSize="$8" color="$purple12" fontWeight="bold" textAlign="center">
-          {text}
-        </Text>
-        
-        {!hasError && (
-          <Text 
-            fontSize="$4" 
-            color="$purple10" 
-            textAlign="center" 
-            marginTop="$2"
-            marginBottom="$4"
-          >
-            Mantente informado con las últimas noticias
-          </Text>
-        )}
-      </YStack>
+    <YStack
+      flex={1}
+      backgroundColor="$background"
+      paddingTop={insets.top + statusBarHeight + 10}
+      paddingBottom={hasNavigationButtons ? insets.bottom : 20}
+    >
+      <StatusBar
+        backgroundColor="transparent"
+        translucent
+        barStyle="dark-content"
+      />
       
+      <YStack paddingHorizontal="$4" marginBottom="$4" gap="$3">
+        <XStack justifyContent="space-between" alignItems="center">
+          <Text
+            fontSize="$8"
+            fontWeight="bold"
+            color="$color12"
+            flex={1}
+          >
+            {text}
+          </Text>
+          <FavoritesCounterContainer />
+        </XStack>
+        
+        <SearchBarContainer 
+          placeholder="Buscar por título, contenido o categoría..."
+        />
+      </YStack>
+
       <FlatList
         data={news}
         renderItem={renderNewsItem}
-        keyExtractor={(item: NewsData) => item.id}
+        keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           paddingHorizontal: 16,
