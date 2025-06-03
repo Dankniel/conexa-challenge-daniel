@@ -5,7 +5,6 @@ import { ArrowLeft, Heart } from '@tamagui/lucide-icons';
 import { FavoritesScreenPresentationalProps } from './types';
 import { NewsData } from '../../../home/components/NewsCard/types';
 import NewsCardContainer from '../../../home/components/NewsCard/NewsCardContainer';
-import { useI18n } from '../../../../i18n';
 
 const FavoritesScreenPresentational = ({
   favoriteNews,
@@ -16,10 +15,9 @@ const FavoritesScreenPresentational = ({
   paddingBottom,
   contentPaddingBottom,
   statusBarBackgroundColor,
-  statusBarStyle
+  statusBarStyle,
+  texts
 }: FavoritesScreenPresentationalProps) => {
-  
-  const { t } = useI18n();
   
   const renderNewsItem = ({ item }: { item: NewsData }) => (
     <NewsCardContainer
@@ -35,10 +33,10 @@ const FavoritesScreenPresentational = ({
         <YStack gap="$3" alignItems="center" marginTop="$8">
           <Spinner size="large" color="$purple10" />
           <Text fontSize="$4" color="$purple10" textAlign="center">
-            {t('favorites.loadingFavorites')}
+            {texts.loadingFavorites}
           </Text>
           <Text fontSize="$3" color="$gray10" textAlign="center">
-            {t('messages.momentPlease')}
+            {texts.momentPlease}
           </Text>
         </YStack>
       );
@@ -48,10 +46,10 @@ const FavoritesScreenPresentational = ({
       <YStack gap="$4" alignItems="center" marginTop="$8" paddingHorizontal="$4">
         <Heart size={64} color="$gray9" />
         <Text fontSize="$6" color="$gray10" textAlign="center" fontWeight="bold">
-          {t('favorites.noFavorites')}
+          {texts.noFavorites}
         </Text>
         <Text fontSize="$4" color="$gray9" textAlign="center">
-          {t('favorites.addFromHome')}
+          {texts.addFromHome}
         </Text>
       </YStack>
     );
@@ -91,12 +89,12 @@ const FavoritesScreenPresentational = ({
               fontWeight="bold"
               color="$color12"
             >
-              {t('favorites.title')}
+              {texts.title}
             </Text>
           </XStack>
           
           <Text fontSize="$3" color="$gray10">
-            {isLoading ? '...' : t('favorites.favoritesCount', { count: favoriteNews.length })}
+            {isLoading ? '...' : texts.favoritesCount(favoriteNews.length)}
           </Text>
         </XStack>
       </YStack>

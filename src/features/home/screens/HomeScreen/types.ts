@@ -7,4 +7,17 @@ export interface HomeScreenPresentationalProps {
   onNavigateToFavorites: () => void;
   isLoading?: boolean;
   hasError?: boolean;
+  texts: {
+    searchPlaceholder: string;
+    loadingNews: string;
+    errorLoadingNews: string;
+    checkConnection: string;
+    noNewsFound: string;
+    tryOtherTerms: string;
+  };
+  layoutStyles: {
+    paddingTop: number;
+    paddingBottom: number;
+    contentPaddingBottom: number;
+  };
 } 

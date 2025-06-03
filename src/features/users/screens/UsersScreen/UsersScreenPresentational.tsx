@@ -1,11 +1,10 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { FlatList, ListRenderItem, RefreshControl } from 'react-native';
 import { YStack, Text, Spinner } from 'tamagui';
 import { AlertCircle } from '@tamagui/lucide-icons';
 import { UsersScreenPresentationalProps } from './types';
 import { User } from '../../../../types/user';
 import UserItem from '../../components/UserItem/UserItemContainer';
-import { useI18n } from '../../../../i18n';
 
 const UsersScreenPresentational = ({
   users,
@@ -15,44 +14,43 @@ const UsersScreenPresentational = ({
   onRefresh,
   onSelectUser,
   paddingTop,
+  texts,
 }: UsersScreenPresentationalProps) => {
 
-  const { t } = useI18n();
-
-  const renderUserItem: ListRenderItem<User> = useCallback(({ item }) => (
+  const renderUserItem: ListRenderItem<User> = ({ item }) => (
     <UserItem
       user={item}
       onPress={onSelectUser}
     />
-  ), [onSelectUser]);
+  );
 
-  const getItemLayout = useCallback((data: any, index: number) => ({
+  const getItemLayout = (data: any, index: number) => ({
     length: 140, // Altura estimada del item
     offset: 140 * index,
     index,
-  }), []);
+  });
 
-  const keyExtractor = useCallback((item: User) => item.id.toString(), []);
+  const keyExtractor = (item: User) => item.id.toString();
 
-  const ListHeaderComponent = useCallback(() => (
+  const ListHeaderComponent = () => (
     <YStack gap="$4" mb="$4">
       <Text fontSize="$8" color="$purple12" fontWeight="bold" textAlign="center">
-        {t('users.title')}
+        {texts.title}
       </Text>
       
       <Text fontSize="$3" color="$purple11" textAlign="center">
-        {t('users.usersFound', { count: users.length })}
+        {texts.usersFound(users.length)}
       </Text>
     </YStack>
-  ), [users.length, t]);
+  );
 
-  const ListEmptyComponent = useCallback(() => {
+  const ListEmptyComponent = () => {
     if (isLoading) {
       return (
         <YStack ai="center" jc="center" py="$8" gap="$4">
           <Spinner size="large" color="$purple10" />
           <Text fontSize="$5" color="$purple11" textAlign="center">
-            {t('users.loadingUsers')}
+            {texts.loadingUsers}
           </Text>
         </YStack>
       );
@@ -63,10 +61,10 @@ const UsersScreenPresentational = ({
         <YStack ai="center" jc="center" py="$8" gap="$4">
           <AlertCircle size={48} color="$red10" />
           <Text fontSize="$5" color="$red11" textAlign="center" fontWeight="600">
-            {t('users.errorLoadingUsers')}
+            {texts.errorLoadingUsers}
           </Text>
           <Text fontSize="$4" color="$purple11" textAlign="center">
-            {t('users.pullToRetry')}
+            {texts.pullToRetry}
           </Text>
         </YStack>
       );
@@ -75,14 +73,14 @@ const UsersScreenPresentational = ({
     return (
       <YStack ai="center" jc="center" py="$8" gap="$4">
         <Text fontSize="$5" color="$purple11" textAlign="center" fontWeight="600">
-          {t('users.noUsersFound')}
+          {texts.noUsersFound}
         </Text>
         <Text fontSize="$4" color="$purple10" textAlign="center">
-          {t('users.tryDifferentSearch')}
+          {texts.tryDifferentSearch}
         </Text>
       </YStack>
     );
-  }, [isLoading, isError, t]);
+  };
 
   return (
     <YStack f={1} backgroundColor="$purple1" paddingTop={paddingTop}>

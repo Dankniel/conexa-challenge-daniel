@@ -9,4 +9,11 @@ export interface LoginScreenPresentationalProps {
   error: string | null;
   showPassword: boolean;
   onTogglePasswordVisibility: () => void;
+  texts: {
+    username: string;
+    usernamePlaceholder: string;
+    password: string;
+    passwordPlaceholder: string;
+    loginButton: string;
+  };
 } 

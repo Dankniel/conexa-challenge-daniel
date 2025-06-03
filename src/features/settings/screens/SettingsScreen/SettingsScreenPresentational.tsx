@@ -1,22 +1,20 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { YStack, Text } from 'tamagui';
 import { SettingsScreenPresentationalProps } from './types';
 import { LogOut } from '@tamagui/lucide-icons';
-import { useI18n } from '../../../../i18n';
-import { I18nDemo } from '../../components/I18nDemo';
+import { I18nDemoContainer as I18nDemo } from '../../components/I18nDemoContainer';
 import { ButtonContainer as Button } from '../../../../components/Button/ButtonContainer';
 
 const SettingsScreenPresentational = ({ 
   onLogoutPress, 
   loading,
-  paddingTop
+  paddingTop,
+  texts
 }: SettingsScreenPresentationalProps) => {
-  const { t } = useI18n();
-
   return (
     <YStack f={1} p="$4" gap="$6" backgroundColor="$purple1" paddingTop={paddingTop}>
       <Text fontSize="$8" color="$purple12" fontWeight="bold" textAlign="center" mb="$4">
-        {t('settings.title')}
+        {texts.title}
       </Text>
       
       <YStack flex={1} jc="center" gap="$6">
@@ -35,7 +33,7 @@ const SettingsScreenPresentational = ({
           icon={loading ? undefined : <LogOut />}
         >
           <Text fontWeight="bold">
-            {loading ? t('settings.loggingOut') : t('auth.logout')}
+            {texts.logoutButton}
           </Text>
         </Button>
       </YStack>

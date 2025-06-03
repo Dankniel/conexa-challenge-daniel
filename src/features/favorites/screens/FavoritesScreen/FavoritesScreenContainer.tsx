@@ -3,6 +3,7 @@ import { Platform, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
+import { useI18n } from '../../../../i18n';
 import FavoritesScreenPresentational from './FavoritesScreenPresentational';
 import { FavoritesScreenNavigationProp } from '../../../../navigation/types';
 import { NewsData } from '../../../home/components/NewsCard/types';
@@ -12,6 +13,7 @@ import { selectFavoritePosts, selectIsLoadingFavorites } from '../../../../store
 const FavoritesScreenContainer = () => {
   const navigation = useNavigation<FavoritesScreenNavigationProp>();
   const insets = useSafeAreaInsets();
+  const { t } = useI18n();
   
   // Estados locales para controlar la carga
   const [favoriteNewsData, setFavoriteNewsData] = useState<NewsData[]>([]);
@@ -59,6 +61,16 @@ const FavoritesScreenContainer = () => {
   const paddingBottom = hasNavigationButtons ? insets.bottom : 20;
   const contentPaddingBottom = getTabBarHeight() + 20;
 
+  // Preparar textos traducidos
+  const texts = {
+    title: t('favorites.title'),
+    loadingFavorites: t('favorites.loadingFavorites'),
+    momentPlease: t('messages.momentPlease'),
+    noFavorites: t('favorites.noFavorites'),
+    addFromHome: t('favorites.addFromHome'),
+    favoritesCount: (count: number) => t('favorites.favoritesCount', { count })
+  };
+
   return (
     <FavoritesScreenPresentational
       favoriteNews={favoriteNewsData}
@@ -70,6 +82,7 @@ const FavoritesScreenContainer = () => {
       contentPaddingBottom={contentPaddingBottom}
       statusBarBackgroundColor="transparent"
       statusBarStyle="dark-content"
+      texts={texts}
     />
   );
 };

@@ -41,6 +41,15 @@ const LoginScreenContainer = () => {
     setShowPassword(!showPassword);
   };
 
+  // Preparar textos traducidos
+  const texts = {
+    username: t('login.username'),
+    usernamePlaceholder: t('login.usernamePlaceholder'),
+    password: t('login.password'),
+    passwordPlaceholder: t('login.passwordPlaceholder'),
+    loginButton: t('login.loginButton')
+  };
+
   return (
     <LoginScreenPresentational
       text={t('login.welcome')}
@@ -53,6 +62,7 @@ const LoginScreenContainer = () => {
       error={error}
       showPassword={showPassword}
       onTogglePasswordVisibility={togglePasswordVisibility}
+      texts={texts}
     />
   );
 };

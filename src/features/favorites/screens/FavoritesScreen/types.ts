@@ -10,4 +10,12 @@ export interface FavoritesScreenPresentationalProps {
   contentPaddingBottom: number;
   statusBarBackgroundColor: string;
   statusBarStyle: 'default' | 'light-content' | 'dark-content';
+  texts: {
+    title: string;
+    loadingFavorites: string;
+    momentPlease: string;
+    noFavorites: string;
+    addFromHome: string;
+    favoritesCount: (count: number) => string;
+  };
 } 
