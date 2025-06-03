@@ -27,7 +27,6 @@ const SettingsScreenContainer = () => {
 
   return (
     <SettingsScreenPresentational
-      text="Configuración"
       onLogoutPress={handleLogout}
       loading={isLoading}
       paddingTop={paddingTop}
