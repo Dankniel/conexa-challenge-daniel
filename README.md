@@ -65,6 +65,16 @@ Below is the main structure description:
 
 This structure aims to separate concerns and facilitate the organized growth of the project.
 
+## Naming Conventions
+
+To maintain code consistency and readability, we follow the following naming conventions:
+
+- **React Components:** React component files and names (like screens, global components, etc.) should use **PascalCase** (e.g., `HomeScreenContainer.tsx`, `Button.tsx`). This follows the standard React convention to differentiate components from native elements.
+- **Support Files:** Files that do not directly define a main component (like type files, style files, utilities, global hooks) should use **lowercase** (e.g., `types.ts`, `styles.ts`, `helpers.ts`). While snake_case or kebab-case are also common, we use lowercase for these files in this project.
+- **Folders:** Folder names should be descriptive and generally in **lowercase** (e.g., `components`, `screens`, `utils`). Folders that group feature-specific components might use **PascalCase** for the main container folder (e.g., `HomeScreen/`).
+
+This convention helps to quickly identify the purpose of a file or folder's content.
+
 ## Testing
 
 This project utilizes Jest for unit and integration testing. Tests are located in the `__tests__/` directory at the root of the project.
