@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { store } from './src/store/store';
 import { TamaguiProvider } from 'tamagui';
 import tamaguiConfig from './tamagui.config';
+import './src/i18n';
 
 export default function App() {
   return (

@@ -1,0 +1,71 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "confirm": "Confirmar",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Crear",
+    "update": "Actualizar",
+    "search": "Buscar",
+    "back": "Volver",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "submit": "Enviar",
+    "close": "Cerrar",
+    "open": "Abrir",
+    "yes": "Sí",
+    "no": "No"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "profile": "Perfil",
+    "settings": "Configuración",
+    "about": "Acerca de"
+  },
+  "auth": {
+    "login": "Iniciar Sesión",
+    "logout": "Cerrar Sesión",
+    "register": "Registrarse",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "email": "Correo Electrónico",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar Contraseña",
+    "username": "Nombre de Usuario",
+    "firstName": "Nombre",
+    "lastName": "Apellido"
+  },
+  "validation": {
+    "required": "Este campo es obligatorio",
+    "invalidEmail": "Correo electrónico inválido",
+    "passwordTooShort": "La contraseña debe tener al menos 8 caracteres",
+    "passwordsDoNotMatch": "Las contraseñas no coinciden",
+    "invalidFormat": "Formato inválido"
+  },
+  "messages": {
+    "welcomeMessage": "¡Bienvenido!",
+    "goodBye": "¡Hasta luego!",
+    "thankYou": "¡Gracias!",
+    "pleaseWait": "Por favor espera",
+    "tryAgain": "Inténtalo de nuevo",
+    "noDataFound": "No se encontraron datos",
+    "connectionError": "Error de conexión"
+  },
+  "settings": {
+    "title": "Configuración",
+    "userProfile": "Perfil de Usuario",
+    "userProfileDescription": "Administra tu información personal y preferencias de cuenta",
+    "notifications": "Notificaciones",
+    "notificationsDescription": "Configura qué notificaciones deseas recibir",
+    "generalSettings": "Configuración General",
+    "generalSettingsDescription": "Ajustes de la aplicación y preferencias generales",
+    "language": "Idioma",
+    "languageDescription": "Selecciona tu idioma preferido",
+    "loggingOut": "Cerrando Sesión...",
+    "i18nDemo": "Ejemplos de traducciones",
+    "i18nDemoDescription": "Prueba las funcionalidades de i18n"
+  }
+} 

@@ -1,0 +1,71 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "update": "Update",
+    "search": "Search",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "close": "Close",
+    "open": "Open",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "navigation": {
+    "home": "Home",
+    "profile": "Profile",
+    "settings": "Settings",
+    "about": "About"
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "forgotPassword": "Forgot your password?",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "username": "Username",
+    "firstName": "First Name",
+    "lastName": "Last Name"
+  },
+  "validation": {
+    "required": "This field is required",
+    "invalidEmail": "Invalid email",
+    "passwordTooShort": "Password must be at least 8 characters",
+    "passwordsDoNotMatch": "Passwords do not match",
+    "invalidFormat": "Invalid format"
+  },
+  "messages": {
+    "welcomeMessage": "Welcome!",
+    "goodBye": "Goodbye!",
+    "thankYou": "Thank you!",
+    "pleaseWait": "Please wait",
+    "tryAgain": "Try again",
+    "noDataFound": "No data found",
+    "connectionError": "Connection error"
+  },
+  "settings": {
+    "title": "Settings",
+    "userProfile": "User Profile",
+    "userProfileDescription": "Manage your personal information and account preferences",
+    "notifications": "Notifications",
+    "notificationsDescription": "Configure which notifications you want to receive",
+    "generalSettings": "General Settings",
+    "generalSettingsDescription": "Application settings and general preferences",
+    "language": "Language",
+    "languageDescription": "Select your preferred language",
+    "loggingOut": "Logging out...",
+    "i18nDemo": "Translation examples",
+    "i18nDemoDescription": "Test the i18n features"
+  }
+} 
