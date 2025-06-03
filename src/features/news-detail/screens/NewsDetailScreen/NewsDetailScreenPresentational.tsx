@@ -1,6 +1,6 @@
 import React from 'react';
 import { YStack, XStack, Text, Button, Image, ScrollView } from 'tamagui';
-import { StatusBar, Platform } from 'react-native';
+import { StatusBar, Platform, TouchableOpacity } from 'react-native';
 import { ArrowLeft, Heart } from '@tamagui/lucide-icons';
 import { NewsDetailScreenPresentationalProps } from './types';
 
@@ -37,26 +37,27 @@ const NewsDetailScreenPresentational = ({
         borderBottomWidth={1}
         borderBottomColor="$borderColor"
       >
-        <Button
-          size="$3"
-          variant="outlined"
-          onPress={onGoBack}
-          icon={ArrowLeft}
-          padding="$2"
-          backgroundColor="transparent"
-          borderWidth={0}
-        />
+          <Button
+            size="$3"
+            variant="outlined"
+            circular
+            onPress={onGoBack}
+            borderColor="$purple10"
+            backgroundColor="$purple2"
+          >
+            <ArrowLeft size={16} color="$purple10" />
+          </Button>
         
-        <Button
-          size="$3"
-          variant="outlined"
+        <TouchableOpacity
           onPress={onToggleFavorite}
-          icon={Heart}
-          padding="$2"
-          backgroundColor="transparent"
-          borderWidth={0}
-          color={isFavorite ? '$red10' : '$gray9'}
-        />
+          style={{ padding: 4 }}
+        >
+          <Heart 
+            size={24} 
+            color={isFavorite ? "#ef4444" : "#6b7280"}
+            fill={isFavorite ? "#ef4444" : "transparent"}
+          />
+        </TouchableOpacity>
       </XStack>
 
       {/* Contenido scrolleable */}
