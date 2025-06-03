@@ -11,5 +11,6 @@ export * from './slices/authSlice';
 export * from './slices/usersSlice';
 
 // Selector exports
+export * from './selectors/authSelectors';
 export * from './selectors/postsSelectors';
 export * from './selectors/usersSelectors'; 

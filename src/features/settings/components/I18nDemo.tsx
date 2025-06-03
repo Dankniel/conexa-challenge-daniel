@@ -1,10 +1,12 @@
+import React from 'react';
 import { YStack, XStack, Text, Card } from 'tamagui';
-import { useI18n } from '../../../i18n';
+import { useI18n, useLanguageWithRedux } from '../../../i18n';
 import { LanguageSwitcherContainer as LanguageSwitcher } from './LanguageSwitcher/LanguageSwitcherContainer';
 import { Globe } from '@tamagui/lucide-icons';
 
-const I18nDemo = () => {
+const I18nDemo = React.memo(() => {
   const { t } = useI18n();
+  const { selectedLanguage } = useLanguageWithRedux();
 
   return (
     <Card
@@ -22,9 +24,19 @@ const I18nDemo = () => {
         </Text>
       </XStack>
       
-      <Text fontSize="$4" color="$purple10" textAlign="center" mb="$5">
+      <Text fontSize="$4" color="$purple10" textAlign="center" mb="$3">
         {t('settings.languageDescription')}
       </Text>
+
+      {/* Idioma actual desde Redux */}
+      <XStack jc="center" ai="center" mb="$4">
+        <Text fontSize="$3" color="$purple9" fontWeight="500">
+          Idioma guardado: 
+        </Text>
+        <Text fontSize="$3" color="$purple12" fontWeight="700" ml="$2">
+          {selectedLanguage === 'es' ? '🇪🇸 Español' : '🇺🇸 English'}
+        </Text>
+      </XStack>
 
       {/* Language Switcher */}
       <YStack gap="$4" ai="center" mb="$5">
@@ -67,6 +79,8 @@ const I18nDemo = () => {
       </YStack>
     </Card>
   );
-};
+});
+
+I18nDemo.displayName = 'I18nDemo';
 
 export { I18nDemo }; 

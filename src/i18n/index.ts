@@ -42,6 +42,6 @@ i18n
   });
 
 // Exports
-export { useI18n, useLanguageSwitch, translate } from './hooks';
+export { useI18n, useLanguageSwitch, useLanguageWithRedux, translate } from './hooks';
 export type { SupportedLanguages, LanguageResource, TranslationKeys, I18nConfig } from './types';
 export default i18n; 

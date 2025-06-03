@@ -1,3 +1,4 @@
+import React from 'react';
 import { Text, XStack } from 'tamagui';
 import { ButtonContainer as Button } from '../../../../components/Button/ButtonContainer';
 import {
@@ -7,15 +8,15 @@ import {
   LanguageTextPresentationalProps,
 } from './types';
 
-const LanguageSwitcherPresentational = ({ children }: LanguageSwitcherPresentationalProps) => {
+const LanguageSwitcherPresentational = React.memo(({ children }: LanguageSwitcherPresentationalProps) => {
   return (
     <XStack gap="$3" ai="center" jc="center">
       {children}
     </XStack>
   );
-};
+});
 
-const LanguageButtonPresentational = ({ 
+const LanguageButtonPresentational = React.memo(({ 
   onPress, 
   isSelected, 
   children 
@@ -29,9 +30,9 @@ const LanguageButtonPresentational = ({
       {children}
     </Button>
   );
-};
+});
 
-const LanguageTogglePresentational = ({ 
+const LanguageTogglePresentational = React.memo(({ 
   onPress, 
   currentLanguage, 
   children 
@@ -45,11 +46,17 @@ const LanguageTogglePresentational = ({
       {children || currentLanguage.toUpperCase()}
     </Button>
   );
-};
+});
 
-const LanguageTextPresentational = ({ text }: LanguageTextPresentationalProps) => {
+const LanguageTextPresentational = React.memo(({ text }: LanguageTextPresentationalProps) => {
   return <Text>{text}</Text>;
-};
+});
+
+// Asignar displayName para debugging
+LanguageSwitcherPresentational.displayName = 'LanguageSwitcherPresentational';
+LanguageButtonPresentational.displayName = 'LanguageButtonPresentational';
+LanguageTogglePresentational.displayName = 'LanguageTogglePresentational';
+LanguageTextPresentational.displayName = 'LanguageTextPresentational';
 
 export {
   LanguageSwitcherPresentational,

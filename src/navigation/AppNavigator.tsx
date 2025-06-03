@@ -8,7 +8,7 @@ import AuthNavigator from './AuthNavigator';
 import MainTabNavigator from './MainTabNavigator';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../store/store';
-import { setLoading, setUserToken } from '../store/slices/authSlice';
+import { setLoading, setUserToken, loadLanguageFromStorage } from '../store/slices/authSlice';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -19,18 +19,25 @@ const AppNavigator = () => {
 
   // Simulate initial loading and token check
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      // For now, we simulate that there's no saved token
-      dispatch(setLoading(false));
-      // To test the logged-in flow on startup, uncomment the next line:
-    dispatch(setUserToken('dummy-token'));
-    }, 1000);
+    const initializeApp = async () => {
+      // Cargar idioma desde AsyncStorage
+      await dispatch(loadLanguageFromStorage());
+      
+      const timeoutId = setTimeout(() => {
+        // For now, we simulate that there's no saved token
+        dispatch(setLoading(false));
+        // To test the logged-in flow on startup, uncomment the next line:
+        dispatch(setUserToken('dummy-token'));
+      }, 1000);
 
-    // Cleanup function to clear the timeout
-    return () => {
-      clearTimeout(timeoutId);
+      // Cleanup function to clear the timeout
+      return () => {
+        clearTimeout(timeoutId);
+      };
     };
-  }, [dispatch]); // Add dispatch to dependencies
+
+    initializeApp();
+  }, [dispatch]);
 
   // Set navigation bar color for Android
   useEffect(() => {

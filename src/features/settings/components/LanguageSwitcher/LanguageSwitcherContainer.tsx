@@ -1,4 +1,5 @@
-import { useLanguageSwitch, useI18n } from '../../../../i18n';
+import { useCallback } from 'react';
+import { useLanguageWithRedux, useI18n } from '../../../../i18n';
 import {
   LanguageSwitcherPresentational,
   LanguageButtonPresentational,
@@ -21,16 +22,16 @@ const LanguageButtonContainer = ({
   children, 
   onPress 
 }: LanguageButtonContainerProps) => {
-  const { changeLanguage, getCurrentLanguage } = useI18n();
-  const isSelected = getCurrentLanguage() === language;
+  const { changeLanguage, selectedLanguage } = useLanguageWithRedux();
+  const isSelected = selectedLanguage === language;
 
-  const handlePress = () => {
+  const handlePress = useCallback(() => {
     if (onPress) {
       onPress();
     } else {
       changeLanguage(language);
     }
-  };
+  }, [onPress, changeLanguage, language]);
 
   return (
     <LanguageButtonPresentational
@@ -43,7 +44,7 @@ const LanguageButtonContainer = ({
 };
 
 const LanguageToggleContainer = ({ children }: LanguageToggleContainerProps) => {
-  const { toggleLanguage, currentLanguage } = useLanguageSwitch();
+  const { toggleLanguage, currentLanguage } = useLanguageWithRedux();
 
   return (
     <LanguageTogglePresentational
