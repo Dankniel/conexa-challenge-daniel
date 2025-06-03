@@ -43,7 +43,6 @@ const FavoritesScreenContainer = () => {
   };
 
   const handleNewsPress = (news: NewsData) => {
-    console.log('Navigating to news detail from favorites:', news.title);
     navigation.navigate('NewsDetail', { news });
   };
 

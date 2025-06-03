@@ -47,7 +47,6 @@ export const loadLanguageFromStorage = () => async (dispatch: any) => {
       }
     }
   } catch (error) {
-    console.error('Error loading language from AsyncStorage:', error);
     // En caso de error, mantener el idioma por defecto
   }
 };
@@ -57,7 +56,6 @@ export const saveLanguageToStorage = (language: SupportedLanguages) => async (di
   try {
     await AsyncStorage.setItem(LANGUAGE_STORAGE_KEY, language);
   } catch (error) {
-    console.error('Error saving language to AsyncStorage:', error);
     // Si falla el guardado, no hacemos nada más ya que Redux está actualizado
   }
 };
@@ -68,7 +66,7 @@ export const updateLanguageComplete = (language: SupportedLanguages) => async (d
     dispatch(setSelectedLanguage(language));
     await AsyncStorage.setItem(LANGUAGE_STORAGE_KEY, language);
   } catch (error) {
-    console.error('Error saving language to AsyncStorage:', error);
+    // Silently handle error, keep Redux state updated
   }
 };
 

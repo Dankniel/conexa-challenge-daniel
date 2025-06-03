@@ -19,7 +19,6 @@ const SettingsScreenContainer = () => {
     setTimeout(() => {
       dispatch(setUserToken(null));
       dispatch(setLoading(false));
-      console.log('User logged out (Redux)');
     }, 1000); // Simulate network delay
   };
 

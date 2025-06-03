@@ -20,7 +20,7 @@ const HomeScreenContainer = () => {
     try {
       navigation.navigate('NewsDetail', { news });
     } catch (error) {
-      console.error('navigation error:', error);
+      // Navigation error handled silently
     }
   };
 

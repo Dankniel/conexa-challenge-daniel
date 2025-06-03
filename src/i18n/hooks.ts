@@ -61,7 +61,6 @@ export const useLanguageWithRedux = () => {
   useEffect(() => {
     const currentLang = getCurrentLanguage();
     if (selectedLanguage && currentLang !== selectedLanguage) {
-      console.log(`Sincronizando idioma: ${currentLang} -> ${selectedLanguage}`);
       i18n.changeLanguage(selectedLanguage);
     }
   }, [selectedLanguage, getCurrentLanguage]);
@@ -69,8 +68,6 @@ export const useLanguageWithRedux = () => {
   const changeLanguage = useCallback((language: SupportedLanguages) => {
     // Solo actualizar si es diferente al actual
     if (selectedLanguage !== language) {
-      console.log(`Cambiando idioma a: ${language}`);
-      
       // 1. Primero actualizar Redux sincrónicamente
       dispatch(setSelectedLanguage(language));
       
@@ -117,7 +114,6 @@ export const useI18nInitialization = () => {
     if (!hasInitialized.current && selectedLanguage) {
       const currentI18nLang = i18n.language;
       if (currentI18nLang !== selectedLanguage) {
-        console.log(`Inicialización i18n: ${currentI18nLang} -> ${selectedLanguage}`);
         i18n.changeLanguage(selectedLanguage);
         hasInitialized.current = true;
       } else if (currentI18nLang === selectedLanguage) {

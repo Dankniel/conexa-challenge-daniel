@@ -36,7 +36,6 @@ const NewsDetailScreenContainer = () => {
         minute: '2-digit'
       });
     } catch (error) {
-      console.error('error on date formatting: ', error);
       return 'Fecha inválida';
     }
   };
@@ -46,7 +45,6 @@ const NewsDetailScreenContainer = () => {
   };
 
   const handleToggleFavorite = () => {
-    console.log('Toggling favorite for post:', news.id);
     toggleFavorite();
   };
 

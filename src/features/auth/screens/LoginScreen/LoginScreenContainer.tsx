@@ -22,16 +22,13 @@ const LoginScreenContainer = () => {
       return;
     }
 
-    console.log('Attempting login with:', { username, password });
     setLoading(true);
 
     setTimeout(() => {
       if (username === 'test' && password === 'password') {
         dispatch(setUserToken('dummy-token'));
-        console.log('User logged in (Redux)');
       } else {
         setError(t('login.errorInvalidCredentials'));
-        console.log('Login failed: Invalid credentials');
       }
       setLoading(false);
     }, 1000);

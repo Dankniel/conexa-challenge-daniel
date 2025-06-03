@@ -20,7 +20,6 @@ const FavoritesCounterContainer = ({
   };
 
   const handlePress = () => {
-    console.log('Navigating to favorites...');
     onPress?.();
   };
 

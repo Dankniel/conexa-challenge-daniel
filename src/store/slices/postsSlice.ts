@@ -91,7 +91,6 @@ export const loadFavorites = () => async (dispatch: any, getState: any) => {
     const favoriteIds = storedFavorites ? JSON.parse(storedFavorites) : [];
     dispatch(setFavoriteIds(favoriteIds));
   } catch (error) {
-    console.error('Error loading favorites from AsyncStorage:', error);
     dispatch(setFavoriteIds([]));
   } finally {
     dispatch(setLoadingFavorites(false));
@@ -102,7 +101,7 @@ export const saveFavorites = (favoriteIds: string[]) => async () => {
   try {
     await AsyncStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(favoriteIds));
   } catch (error) {
-    console.error('Error saving favorites to AsyncStorage:', error);
+    // Silently handle error
   }
 };
 

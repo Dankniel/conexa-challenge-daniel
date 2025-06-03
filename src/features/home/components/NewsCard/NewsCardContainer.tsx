@@ -28,26 +28,17 @@ const NewsCardContainer = ({ news, onPress }: NewsCardContainerProps) => {
         year: 'numeric'
       });
     } catch (error) {
-      console.error('Error al formatear fecha:', error);
       return 'Fecha inválida';
     }
   };
 
   const handleNewsPress = () => {
-    console.log('🎯 NewsCardContainer: handleNewsPress llamado');
-    console.log('📰 Noticia seleccionada en card:', news.title);
-    console.log('🔗 onPress function existe?', !!onPress);
-    
     if (onPress) {
-      console.log('🚀 Ejecutando onPress con noticia:', news.id);
       onPress(news);
-    } else {
-      console.warn('⚠️ onPress no está definido');
     }
   };
 
   const handleToggleFavorite = () => {
-    console.log('Toggling favorite for post:', news.id);
     toggleFavorite();
   };
 
