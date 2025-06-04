@@ -28,15 +28,15 @@ const NewsCardPresentational = ({
         padding="$0"
         overflow="hidden"
       >
-        <YStack space="$3">
+        <YStack gap="$3">
           <Image
             source={{ uri: news.imageUrl }}
             width="100%"
             height={180}
-            resizeMode="cover"
+            objectFit="cover"
           />
           
-          <YStack space="$2" padding="$3" paddingTop="$0">
+          <YStack gap="$2" padding="$3" paddingTop="$0">
             <XStack justifyContent="space-between" alignItems="center">
               <Text 
                 fontSize="$2" 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useI18n, useLanguageWithRedux } from '../../../i18n';
+import { useI18n, useLanguageWithRedux } from '../../../../i18n';
 import { I18nDemoPresentational } from './I18nDemoPresentational';
 
 const I18nDemoContainer = () => {

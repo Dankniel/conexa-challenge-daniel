@@ -44,6 +44,7 @@ const NewsDetailScreenPresentational = ({
             onPress={onGoBack}
             borderColor="$purple10"
             backgroundColor="$purple2"
+            testID="go-back-button"
           >
             <ArrowLeft size={16} color="$purple10" />
           </Button>
@@ -51,11 +52,13 @@ const NewsDetailScreenPresentational = ({
         <TouchableOpacity
           onPress={onToggleFavorite}
           style={{ padding: 4 }}
+          testID="toggle-favorite-button"
         >
           <Heart 
             size={24} 
             color={isFavorite ? "#ef4444" : "#6b7280"}
             fill={isFavorite ? "#ef4444" : "transparent"}
+            testID="favorite-icon"
           />
         </TouchableOpacity>
       </XStack>
@@ -79,6 +82,7 @@ const NewsDetailScreenPresentational = ({
                 borderRadius="$4"
                 resizeMode="cover"
                 backgroundColor="$gray3"
+                testID="news-image"
               />
             </YStack>
           )}

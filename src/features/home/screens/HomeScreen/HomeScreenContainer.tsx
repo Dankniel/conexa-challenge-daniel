@@ -3,7 +3,7 @@ import { Platform, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import HomeScreenPresentational from './HomeScreenPresentational';
-import { transformPostsToNewsData } from '../../utils/dataTransformers';
+import { transformPostsToNewsData } from '../../../../utils/dataTransformers';
 import { NewsData } from '../../components/NewsCard/types';
 import { usePosts } from '../../hooks/usePosts';
 import { HomeScreenNavigationProp } from '../../../../navigation/types';
@@ -20,12 +20,11 @@ const HomeScreenContainer = () => {
     try {
       navigation.navigate('NewsDetail', { news });
     } catch (error) {
-      // Navigation error handled silently
+      console.log('Error navigating to news detail', error);
     }
   };
 
   const handleNavigateToFavorites = () => {
-    // Navegación inmediata sin esperar a ningún estado
     navigation.navigate('Favorites');
   };
 
@@ -55,25 +54,24 @@ const HomeScreenContainer = () => {
     tryOtherTerms: t('home.tryOtherTerms')
   };
 
-  // Estado unificado para el presentational
-  const screenState = useMemo(() => {
-    const newsData = posts ? transformPostsToNewsData(posts) : [];
-    
-    const displayText = searchQuery 
-      ? `${t('home.searchResults')}: "${searchQuery}"` 
-      : t('home.latestNews');
+  const newsData = useMemo(() => {
+    return posts ? transformPostsToNewsData(posts) : [];
+  }, [posts]);
 
-    return {
-      text: displayText,
-      news: newsData,
-      isLoading,
-      hasError: !!error,
-      onNewsPress: handleNewsPress,
-      onNavigateToFavorites: handleNavigateToFavorites,
-      texts,
-      layoutStyles
-    };
-  }, [posts, isLoading, error, searchQuery, t, texts, layoutStyles]);
+  const displayText = searchQuery 
+    ? `${t('home.searchResults')}: "${searchQuery}"` 
+    : t('home.latestNews');
+
+  const screenState = {
+    text: displayText,
+    news: newsData,
+    isLoading,
+    hasError: !!error,
+    onNewsPress: handleNewsPress,
+    onNavigateToFavorites: handleNavigateToFavorites,
+    texts,
+    layoutStyles
+  };
 
   return (
     <HomeScreenPresentational {...screenState} />

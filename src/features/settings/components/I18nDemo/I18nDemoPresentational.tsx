@@ -1,19 +1,8 @@
 import React from 'react';
 import { YStack, XStack, Text, Card } from 'tamagui';
 import { Globe } from '@tamagui/lucide-icons';
-import { LanguageSwitcherContainer as LanguageSwitcher } from './LanguageSwitcher/LanguageSwitcherContainer';
-
-interface I18nDemoPresentationalProps {
-  title: string;
-  description: string;
-  savedLanguageLabel: string;
-  selectedLanguageDisplay: string;
-  demoTitle: string;
-  demoTexts: Array<{
-    label: string;
-    value: string;
-  }>;
-}
+import { LanguageSwitcherContainer as LanguageSwitcher } from '../LanguageSwitcher/LanguageSwitcherContainer';
+import { I18nDemoPresentationalProps } from './types';
 
 const I18nDemoPresentational = React.memo(({
   title,

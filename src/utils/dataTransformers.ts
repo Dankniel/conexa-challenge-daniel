@@ -1,5 +1,5 @@
-import { JsonPlaceholderPost } from '../../../store/api';
-import { NewsData } from '../components/NewsCard/types';
+import { JsonPlaceholderPost } from '../store/api';
+import { NewsData } from '../features/home/components/NewsCard/types';
 
 export const transformPostToNewsData = (post: JsonPlaceholderPost): NewsData => {
   return {

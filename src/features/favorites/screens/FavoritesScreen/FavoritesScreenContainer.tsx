@@ -7,7 +7,7 @@ import { useI18n } from '../../../../i18n';
 import FavoritesScreenPresentational from './FavoritesScreenPresentational';
 import { FavoritesScreenNavigationProp } from '../../../../navigation/types';
 import { NewsData } from '../../../home/components/NewsCard/types';
-import { transformPostsToNewsData } from '../../../home/utils/dataTransformers';
+import { transformPostsToNewsData } from '../../../../utils/dataTransformers';
 import { selectFavoritePosts, selectIsLoadingFavorites } from '../../../../store/selectors/postsSelectors';
 
 const FavoritesScreenContainer = () => {
@@ -15,27 +15,18 @@ const FavoritesScreenContainer = () => {
   const insets = useSafeAreaInsets();
   const { t } = useI18n();
   
-  // Estados locales para controlar la carga
   const [favoriteNewsData, setFavoriteNewsData] = useState<NewsData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Datos de Redux - solo se acceden después del montaje
   const favoritePosts = useSelector(selectFavoritePosts);
   const isLoadingFavorites = useSelector(selectIsLoadingFavorites);
 
-  // Cargar datos después del montaje del componente
   useEffect(() => {
-    // Simular carga inmediata para la navegación
-    const timer = setTimeout(() => {
-      if (!isLoadingFavorites && favoritePosts) {
-        // Siempre transformar los datos, incluido cuando la lista está vacía
-        const transformedData = transformPostsToNewsData(favoritePosts);
-        setFavoriteNewsData(transformedData);
-      }
-      setIsLoading(false);
-    }, 50); // 50ms es imperceptible pero permite que la navegación sea fluida
-
-    return () => clearTimeout(timer);
+    if (!isLoadingFavorites && favoritePosts) {
+      const transformedData = transformPostsToNewsData(favoritePosts);
+      setFavoriteNewsData(transformedData);
+    }
+    setIsLoading(false);
   }, [favoritePosts, isLoadingFavorites]);
 
   const handleGoBack = () => {
@@ -46,7 +37,6 @@ const FavoritesScreenContainer = () => {
     navigation.navigate('NewsDetail', { news });
   };
 
-  // Calcular estilos
   const statusBarHeight = Platform.OS === 'android' ? StatusBar.currentHeight || 24 : 0;
   const hasNavigationButtons = Platform.OS === 'android' && insets.bottom > 10;
   
@@ -60,7 +50,6 @@ const FavoritesScreenContainer = () => {
   const paddingBottom = hasNavigationButtons ? insets.bottom : 20;
   const contentPaddingBottom = getTabBarHeight() + 20;
 
-  // Preparar textos traducidos
   const texts = {
     title: t('favorites.title'),
     loadingFavorites: t('favorites.loadingFavorites'),

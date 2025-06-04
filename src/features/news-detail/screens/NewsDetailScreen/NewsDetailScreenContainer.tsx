@@ -48,7 +48,6 @@ const NewsDetailScreenContainer = () => {
     toggleFavorite();
   };
 
-  // Calcular estilos
   const statusBarHeight = Platform.OS === 'android' ? StatusBar.currentHeight || 24 : 0;
   const hasNavigationButtons = Platform.OS === 'android' && insets.bottom > 10;
   

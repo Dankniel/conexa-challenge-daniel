@@ -8,15 +8,15 @@ import {
   LanguageTextPresentationalProps,
 } from './types';
 
-const LanguageSwitcherPresentational = React.memo(({ children }: LanguageSwitcherPresentationalProps) => {
+const LanguageSwitcherPresentational = ({ children }: LanguageSwitcherPresentationalProps) => {
   return (
     <XStack gap="$3" ai="center" jc="center">
       {children}
     </XStack>
   );
-});
+};
 
-const LanguageButtonPresentational = React.memo(({ 
+const LanguageButtonPresentational = ({ 
   onPress, 
   isSelected, 
   children 
@@ -30,9 +30,9 @@ const LanguageButtonPresentational = React.memo(({
       {children}
     </Button>
   );
-});
+};
 
-const LanguageTogglePresentational = React.memo(({ 
+const LanguageTogglePresentational = ({ 
   onPress, 
   currentLanguage, 
   children 
@@ -46,13 +46,12 @@ const LanguageTogglePresentational = React.memo(({
       {children || currentLanguage.toUpperCase()}
     </Button>
   );
-});
+};
 
-const LanguageTextPresentational = React.memo(({ text }: LanguageTextPresentationalProps) => {
+const LanguageTextPresentational = ({ text }: LanguageTextPresentationalProps) => {
   return <Text>{text}</Text>;
-});
+};
 
-// Asignar displayName para debugging
 LanguageSwitcherPresentational.displayName = 'LanguageSwitcherPresentational';
 LanguageButtonPresentational.displayName = 'LanguageButtonPresentational';
 LanguageTogglePresentational.displayName = 'LanguageTogglePresentational';
