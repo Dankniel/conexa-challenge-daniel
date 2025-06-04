@@ -162,6 +162,15 @@ Esta convención ayuda a identificar rápidamente el propósito del contenido de
 
 Este proyecto utiliza **Jest** y **React Native Testing Library** para pruebas unitarias e integración. La estructura de tests debe ser similar a la estructura del proyecto para identificar más fácilmente los tests de cada componente.
 
+### Comandos para ejecutar tests
+
+```bash
+# Ejecutar todos los tests
+npm test
+# o
+yarn test
+
+```
 
 ## 🎯 Principios de Desarrollo
 
