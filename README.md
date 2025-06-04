@@ -36,7 +36,7 @@ Una aplicación móvil desarrollada con React Native y Expo que consume la API d
    - Escanea el código QR con la app Expo Go (Android) o la cámara (iOS)
 
 ### Credenciales de acceso
-- **Usuario:** `user`
+- **Usuario:** `test`
 - **Contraseña:** `password`
 
 ## 📚 Tecnologías y Decisiones de Desarrollo
