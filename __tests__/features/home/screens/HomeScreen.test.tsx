@@ -58,7 +58,7 @@ jest.mock('../../../../src/features/home/hooks/usePosts', () => ({
 }));
 
 // Mock del transformador de datos
-jest.mock('../../../../src/features/home/utils/dataTransformers', () => ({
+jest.mock('../../../../src/utils/dataTransformers', () => ({
   transformPostsToNewsData: jest.fn((posts) => 
     posts.map((post: any) => ({
       id: post.id.toString(),

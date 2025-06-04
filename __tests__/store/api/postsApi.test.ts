@@ -19,6 +19,9 @@ describe('postsApi', () => {
   let store: TestStore;
 
   beforeEach(() => {
+    // Usar fake timers para controlar operaciones asíncronas
+    jest.useFakeTimers();
+    
     store = configureStore({
       reducer: {
         [baseApi.reducerPath]: baseApi.reducer,
@@ -29,7 +32,18 @@ describe('postsApi', () => {
   });
 
   afterEach(() => {
+    // Limpiar todas las queries pendientes
     store.dispatch(baseApi.util.resetApiState());
+    
+    // Limpiar cualquier timer pendiente
+    jest.clearAllTimers();
+    jest.clearAllMocks();
+    
+    // Asegurarse de que no hay operaciones pendientes
+    jest.runOnlyPendingTimers();
+    
+    // Restaurar timers reales
+    jest.useRealTimers();
   });
 
   describe('Configuración básica de API', () => {
