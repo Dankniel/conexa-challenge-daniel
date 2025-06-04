@@ -17,7 +17,7 @@ const LoginScreenContainer = () => {
   const handleLogin = () => {
     setError(null);
 
-    if (!username || !password) {
+    if (!username.trim() || !password.trim()) {
       setError(t('login.errorRequired'));
       return;
     }
@@ -25,7 +25,7 @@ const LoginScreenContainer = () => {
     setLoading(true);
 
     setTimeout(() => {
-      if (username === 'test' && password === 'password') {
+      if (username.trim() === 'test' && password.trim() === 'password') {
         dispatch(setUserToken('dummy-token'));
       } else {
         setError(t('login.errorInvalidCredentials'));
