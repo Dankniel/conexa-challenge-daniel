@@ -63,7 +63,6 @@ const LanguageTextContainer = ({ translationKey }: LanguageTextContainerProps) =
   return <LanguageTextPresentational text={text} />;
 };
 
-// Compound component pattern
 LanguageSwitcherContainer.Button = LanguageButtonContainer;
 LanguageSwitcherContainer.Toggle = LanguageToggleContainer;
 LanguageSwitcherContainer.Text = LanguageTextContainer;

@@ -14,21 +14,18 @@ import { useI18nInitialization } from '../i18n';
 const Stack = createStackNavigator<RootStackParamList>();
 
 const AppNavigator = () => {
-  // Get authentication state from the Redux store
   const { userToken, isLoading } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch<AppDispatch>();
   
-  // Simulate initial loading and token check
+
   useEffect(() => {
     const initializeApp = async () => {
       // Cargar idioma desde AsyncStorage primero
       await dispatch(loadLanguageFromStorage());
       
       const timeoutId = setTimeout(() => {
-        // For now, we simulate that there's no saved token
         dispatch(setLoading(false));
-        // To test the logged-in flow on startup, uncomment the next line:
-        dispatch(setUserToken('dummy-token'));
+        //dispatch(setUserToken('dummy-token'));
       }, 1000);
 
       // Cleanup function to clear the timeout
